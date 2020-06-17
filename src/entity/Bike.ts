@@ -1,32 +1,23 @@
-import  { Entity, PrimaryGeneratedColumn, Column } from 'typeorm'
+import { Entity, PrimaryGeneratedColumn, Column } from "typeorm";
 
 @Entity()
 export class Bike {
+  @PrimaryGeneratedColumn()
+  id: number;
 
-    @PrimaryGeneratedColumn()
-    id :number;
+  @Column()
+  isAvailable: boolean;
 
-    @Column()
-    isAvailable: boolean;
+  @Column()
+  modelCode: string;
 
-    @Column()
-    modelCode: string;
+  @Column({
+    enum: ["MALE", "FEMALE"],
+  })
+  gender: string;
 
-    @Column({
-        enum: [
-            "MALE",
-            "FEMALE"
-        ]
-    })
-    gender: string;
-
-    @Column({
-        enum: [
-            "BLUE",
-            "RED",
-            "YELLOW",
-            "PURPLE",
-        ]
-    })
-    colour: string;
+  @Column({
+    enum: ["BLUE", "RED", "YELLOW", "PURPLE"],
+  })
+  colour: string;
 }
