@@ -1,4 +1,11 @@
-import { Entity, PrimaryGeneratedColumn, Column, ManyToOne } from "typeorm";
+import {
+  Entity,
+  PrimaryGeneratedColumn,
+  Column,
+  ManyToOne,
+  UpdateDateColumn,
+  CreateDateColumn,
+} from "typeorm";
 import { Brand } from "./Brand";
 
 @Entity()
@@ -24,4 +31,10 @@ export class Bike {
 
   @ManyToOne((type) => Brand, (brand) => brand.bikes)
   brand: Brand;
+
+  @UpdateDateColumn()
+  modifiedAt: Date;
+
+  @CreateDateColumn()
+  createdAt: Date;
 }
