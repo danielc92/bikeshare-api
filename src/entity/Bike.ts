@@ -1,4 +1,5 @@
-import { Entity, PrimaryGeneratedColumn, Column } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, ManyToOne } from "typeorm";
+import { Brand } from "./Brand";
 
 @Entity()
 export class Bike {
@@ -20,4 +21,7 @@ export class Bike {
     enum: ["BLUE", "RED", "YELLOW", "PURPLE"],
   })
   colour: string;
+
+  @ManyToOne((type) => Brand, (brand) => brand.bikes)
+  brand: Brand;
 }
