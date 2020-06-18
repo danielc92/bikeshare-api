@@ -3,7 +3,10 @@ import {
   PrimaryGeneratedColumn,
   Column,
   UpdateDateColumn,
+  ManyToMany,
+  JoinTable,
 } from "typeorm";
+import { Route } from "./Route";
 
 @Entity()
 export class Rider {
@@ -27,4 +30,8 @@ export class Rider {
 
   @UpdateDateColumn()
   createdAt: Date;
+
+  @ManyToMany((type) => Route)
+  @JoinTable()
+  routes: Route[];
 }
