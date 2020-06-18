@@ -16,7 +16,7 @@ export class Bike {
   @Column()
   isAvailable: boolean;
 
-  @Column()
+  @Column({ unique: true })
   modelCode: string;
 
   @Column({
