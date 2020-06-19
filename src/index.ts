@@ -1,18 +1,34 @@
 import "reflect-metadata";
 import { createConnection } from "typeorm";
-import { Brand, Bike, Route, Rider } from "./entity";
+import { Brand, Bike, Feedback, Route, Rider } from "./entity";
 import * as express from "express";
+import * as faker from "faker";
 
 createConnection()
   .then(async (connection) => {
-    const repo = connection.getRepository(Bike);
+    // a.forEach((x) => {
+    //   let z = new Feedback();
+    //   z.content = faker.random.words(2);
+    //   connection.manager
+    //     .save(z)
+    //     .then((s) => console.log("Success"))
+    //     .catch((e) => console.log(e));
+    // });
     const app = express();
-    app.get("/", (request, response, next) => {
-      repo
-        .find()
-        .then((r) => response.status(200).json({ r }))
-        .catch((e) => response.status(404).json({ failure: "." }));
-    });
+    app.get(
+      "/",
+      (
+        request: express.Request,
+        response: express.Response,
+        next: express.NextFunction
+      ) => {
+        const repo = connection.manager.getRepository(Feedback);
+        repo
+          .find({ take: 10 })
+          .then((data) => response.status(200).json({ data }))
+          .catch((error) => response.status(404).json({ error }));
+      }
+    );
     app.listen(3010);
   })
   .catch((error) => console.log(error));
