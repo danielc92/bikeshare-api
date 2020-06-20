@@ -3,3 +3,5 @@ export { Brand } from "./Brand";
 export { Rider } from "./Rider";
 export { Route } from "./Route";
 export { Feedback } from "./Feedback";
+export { Contact } from "./Contact";
+export { Pack } from "./Pack";
