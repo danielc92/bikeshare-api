@@ -3,6 +3,7 @@ import {
   PrimaryGeneratedColumn,
   Column,
   UpdateDateColumn,
+  CreateDateColumn,
 } from "typeorm";
 
 @Entity()
@@ -22,6 +23,6 @@ export class Route {
   @UpdateDateColumn()
   modifiedAt: Date;
 
-  @UpdateDateColumn()
+  @CreateDateColumn()
   createdAt: Date;
 }

@@ -4,6 +4,7 @@ import {
   UpdateDateColumn,
   Column,
   ManyToOne,
+  CreateDateColumn,
 } from "typeorm";
 import { Rider } from "./Rider";
 
@@ -24,6 +25,6 @@ export class Feedback {
   @UpdateDateColumn()
   modifiedAt: Date;
 
-  @UpdateDateColumn()
+  @CreateDateColumn()
   createdAt: Date;
 }
