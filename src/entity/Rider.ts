@@ -38,7 +38,10 @@ export class Rider {
   @OneToMany((type) => Feedback, (feedback) => feedback.rider)
   feedbacks: Feedback[];
 
-  @ManyToMany((type) => Pack)
+  @OneToMany((type) => Pack, (pack) => pack.rider)
+  myPacks: Pack[];
+
+  @ManyToMany((type) => Pack, (pack) => pack.riders)
   @JoinTable()
   packs: Pack[];
 
