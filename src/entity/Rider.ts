@@ -6,9 +6,11 @@ import {
   ManyToMany,
   JoinTable,
   OneToMany,
+  CreateDateColumn,
 } from "typeorm";
 import { Route } from "./Route";
 import { Feedback } from "./Feedback";
+import { Pack } from "./Pack";
 
 @Entity()
 export class Rider {
@@ -30,11 +32,15 @@ export class Rider {
   @UpdateDateColumn()
   modifiedAt: Date;
 
-  @UpdateDateColumn()
+  @CreateDateColumn()
   createdAt: Date;
 
   @OneToMany((type) => Feedback, (feedback) => feedback.rider)
   feedbacks: Feedback[];
+
+  @ManyToMany((type) => Pack)
+  @JoinTable()
+  packs: Pack[];
 
   @ManyToMany((type) => Route)
   @JoinTable()
