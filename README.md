@@ -30,3 +30,14 @@ rider.routes = results;
 await connection.manager.save(rider);
 
 ```
+
+Deleting many to many
+
+```
+  let aRider = await connection
+      .getRepository(Rider)
+      .findOne({ where: { id: 3 }, relations: ["packs"] });
+
+    aRider.packs = aRider.packs.filter((p) => p.id !== 3);
+    await connection.manager.save(aRider);
+```
