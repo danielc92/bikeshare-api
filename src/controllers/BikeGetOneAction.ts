@@ -9,6 +9,5 @@ export async function bikeGetOneAction(request: Request, response: Response) {
   if (!results) {
     return response.status(404).json({ message: "Resource not found." });
   }
-
   return response.send(results);
 }

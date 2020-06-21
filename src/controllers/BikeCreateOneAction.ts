@@ -14,9 +14,8 @@ export async function bikeCreateOneAction(
     bike.modelCode = modelCode;
     bike.gender = gender;
     const results = await getManager().save(bike);
-    response.send(results);
+    return response.send(results);
   } catch (error) {
-    console.log(error);
-    response.status(400).json({ error: error.name });
+    return response.status(400).json({ error: error.name });
   }
 }
