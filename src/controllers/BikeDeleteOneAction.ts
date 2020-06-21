@@ -7,7 +7,8 @@ export async function bikeDeleteOneAction(
   response: Response
 ) {
   const repo = getManager().getRepository(Bike);
-  //@ts-ignore
-  const results = await repo.delete({ id: request.body.id });
+  const results = await repo.delete({
+    id: parseInt(request.query.id as string),
+  });
   return response.send(results);
 }
