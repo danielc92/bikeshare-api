@@ -4,10 +4,21 @@ import * as express from "express";
 
 import { AppRoutes } from "./allRoutes";
 import { authMiddlewareFunc } from "./middleware/AuthDummyUser";
+
+interface CustomRoute {
+  path: string;
+  middlewares: any[];
+  method: "post" | "put" | "get" | "delete";
+  action: (
+    request: express.Request,
+    response: express.Response
+  ) => Promise<void>;
+}
 createConnection()
   .then(async (connection) => {
     const app = express();
-    AppRoutes.forEach((route) => {
+    app.use(express.json());
+    AppRoutes.forEach((route: CustomRoute) => {
       app[route.method](
         route.path,
         route.middlewares,
@@ -26,3 +37,12 @@ createConnection()
     app.listen(3000);
   })
   .catch((error) => console.log(error));
+
+// {
+//   path: string;
+//   middlewares: any[];
+//   action: (
+//     request: express.Request,
+//     response: express.Response
+//   ) => Promise<void>;
+// }
