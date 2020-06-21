@@ -8,6 +8,12 @@ import {
 } from "typeorm";
 import { Brand } from "./Brand";
 
+export enum BikeColourEnum {
+  BLUE = "Blue",
+  RED = "Red",
+  NOT_SPECIFIED = "Unknown",
+}
+
 @Entity()
 export class Bike {
   @PrimaryGeneratedColumn()
@@ -25,9 +31,11 @@ export class Bike {
   gender: string;
 
   @Column({
-    enum: ["BLUE", "RED", "YELLOW", "PURPLE"],
+    type: "enum",
+    enum: BikeColourEnum,
+    default: BikeColourEnum.NOT_SPECIFIED,
   })
-  colour: string;
+  colour: BikeColourEnum;
 
   @ManyToOne((type) => Brand, (brand) => brand.bikes)
   brand: Brand;
