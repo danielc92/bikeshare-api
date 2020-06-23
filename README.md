@@ -1,12 +1,16 @@
-# Awesome Project Build with TypeORM
+# Bikeshare API
 
-Steps to run this project:
+A bike share REST-API, designed with Node.js, Typescript, TypeORM, Postgres & Docker
 
-1. Run `npm i` command
-2. Setup database settings inside `ormconfig.json` file
-3. Run `npm start` command
+### Stack
 
-# Examples
+- Typescript
+- Node.js
+- TypeORM
+- Docker
+- Postgres
+
+### Examples
 
 Loading many to many
 
