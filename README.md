@@ -10,6 +10,18 @@ A bike share REST-API, designed with Node.js, Typescript, TypeORM, Postgres & Do
 - Docker
 - Postgres
 
+### Instructions
+
+Running the project
+
+```
+npm run start
+```
+
+### Configuration
+
+TypeORM configuration can be modified in `ormconfig.json` in root of project. Currently the project uses a docker/postgres setup for local development.
+
 ### Examples
 
 Loading many to many
