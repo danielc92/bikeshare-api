@@ -6,6 +6,12 @@ import {
   CreateDateColumn,
 } from "typeorm";
 
+enum RouteDifficulty {
+  HARD = "Hard",
+  MEDIUM = "Medium",
+  BEGINNER = "Beginner",
+}
+
 @Entity()
 export class Route {
   @PrimaryGeneratedColumn()
@@ -17,8 +23,12 @@ export class Route {
   @Column()
   area: string;
 
-  @Column()
-  difficulty: string;
+  @Column({
+    type: "enum",
+    enum: RouteDifficulty,
+    default: RouteDifficulty.MEDIUM,
+  })
+  difficulty: RouteDifficulty;
 
   @UpdateDateColumn()
   modifiedAt: Date;
