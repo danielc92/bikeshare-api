@@ -17,8 +17,7 @@
     "typeorm": "0.2.25"
   },
   "scripts": {
-    "start": "ts-node src/index.ts",
-    "startnodemon": "nodemon src/index.ts",
+    "start": "nodemon src/index.ts",
     "db-kill": "docker kill some-pg && docker rm some-pg",
     "db-start": "docker run --name some-pg -p 5432:5432 -e POSTGRES_PASSWORD=secret -d postgres",
     "db-restart": "docker restart some-pg"
