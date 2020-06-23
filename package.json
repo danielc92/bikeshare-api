@@ -1,7 +1,7 @@
 {
   "name": "bikeshare",
   "version": "0.0.1",
-  "description": "Awesome project developed with TypeORM.",
+  "description": "A bike share REST-API, designed with Node.js, Typescript, TypeORM, Postgres & Docker",
   "devDependencies": {
     "@types/faker": "^4.1.12",
     "@types/node": "^8.0.29",
