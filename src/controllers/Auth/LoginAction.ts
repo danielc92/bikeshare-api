@@ -3,7 +3,6 @@ import { getManager } from "typeorm";
 import { Rider } from "../../entity";
 import * as jwt from "jsonwebtoken";
 import * as bcrypt from "bcrypt";
-import { brandCreateOneAction } from "controllers/Brand/BrandCreateOneAction";
 export async function loginAction(request: Request, response: Response) {
   try {
     const { email, password } = request.body;

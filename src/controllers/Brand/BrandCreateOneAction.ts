@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { getManager } from "typeorm";
-import { Route, Brand } from "../../entity";
+import { Brand } from "../../entity";
 
 export async function brandCreateOneAction(
   request: Request,

@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { getManager } from "typeorm";
-import { Bike, Route } from "../../entity";
+import { Route } from "../../entity";
 
 export async function routeGetOneAction(request: Request, response: Response) {
   try {

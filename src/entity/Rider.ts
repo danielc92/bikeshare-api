@@ -11,7 +11,6 @@ import {
 import { Route } from "./Route";
 import { Feedback } from "./Feedback";
 import { Pack } from "./Pack";
-import { Contact } from "./Contact";
 
 @Entity()
 export class Rider {

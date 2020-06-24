@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { getManager } from "typeorm";
-import { Rider, Contact } from "@entity";
+import { Contact } from "@entity";
 
 export async function contactDeleteOneAction(
   request: Request,

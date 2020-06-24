@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { getManager } from "typeorm";
-import { Bike, Rider } from "../../entity";
+import { Rider } from "../../entity";
 
 export async function riderGetAllAction(request: Request, response: Response) {
   const repo = getManager().getRepository(Rider);
