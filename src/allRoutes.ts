@@ -1,7 +1,7 @@
 import { bikeGetAllAction } from "./controllers/Bike/BikeGetAllAction";
 import { bikeGetOneAction } from "./controllers/Bike/BikeGetOneAction";
 import { bikeDeleteOneAction } from "./controllers/Bike/BikeDeleteOneAction";
-import { authMiddlewareFunc } from "./middleware/AuthDummyUser";
+import { authMiddlewareFunc } from "./middleware/CheckRiderIsAuthenticated";
 import { bikeCreateOneAction } from "./controllers/Bike/BikeCreateOneAction";
 import { Request, Response } from "express";
 import { bikeUpdateOneAction } from "./controllers/Bike/BikeUpdateOneAction";
