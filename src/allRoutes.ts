@@ -15,10 +15,10 @@ import { brandGetOneAction } from "./controllers/Brand/BrandGetOneAction";
 import { brandUpdateOneAction } from "./controllers/Brand/BrandUpdateOneAction";
 import { brandDeleteOneAction } from "./controllers/Brand/BrandDeleteOneAction";
 import { brandCreateOneAction } from "./controllers/Brand/BrandCreateOneAction";
-import { riderGetOneAction } from "controllers/Rider/RiderGetOneAction";
-import { riderUpdateOneAction } from "controllers/Rider/RiderUpdateOneAction";
-import { riderCreateOneAction } from "controllers/Rider/RiderCreateOneAction";
-import { riderDeleteOneAction } from "controllers/Rider/RiderDeleteOneAction";
+import { riderGetOneAction } from "./controllers/Rider/RiderGetOneAction";
+import { riderUpdateOneAction } from "./controllers/Rider/RiderUpdateOneAction";
+import { riderCreateOneAction } from "./controllers/Rider/RiderCreateOneAction";
+import { riderDeleteOneAction } from "./controllers/Rider/RiderDeleteOneAction";
 
 const ROUTES = {
   RIDER: "/rider",
