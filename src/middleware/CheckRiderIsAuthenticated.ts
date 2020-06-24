@@ -15,6 +15,6 @@ export async function authMiddlewareFunc(
     const decoded = await jwt.verify(token as string, "secret");
     next();
   } catch (error) {
-    response.status(400).json({ message: error.toString() });
+    return response.status(400).json({ message: error.toString() });
   }
 }
