@@ -10,8 +10,12 @@
     "typescript": "3.3.3333"
   },
   "dependencies": {
+    "@types/bcrypt": "^3.0.0",
     "@types/express": "^4.17.6",
+    "@types/jsonwebtoken": "^8.5.0",
+    "bcrypt": "^3.0.6",
     "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
     "pg": "^7.3.0",
     "reflect-metadata": "^0.1.10",
     "typeorm": "0.2.25"
