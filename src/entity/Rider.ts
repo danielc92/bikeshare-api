@@ -11,11 +11,18 @@ import {
 import { Route } from "./Route";
 import { Feedback } from "./Feedback";
 import { Pack } from "./Pack";
+import { Contact } from "./Contact";
 
 @Entity()
 export class Rider {
   @PrimaryGeneratedColumn()
   id: number;
+
+  @Column({ nullable: true })
+  email: string;
+
+  @Column({ nullable: true })
+  password: string;
 
   @Column()
   firstName: string;
