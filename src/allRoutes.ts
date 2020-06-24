@@ -19,6 +19,7 @@ import { riderGetOneAction } from "./controllers/Rider/RiderGetOneAction";
 import { riderUpdateOneAction } from "./controllers/Rider/RiderUpdateOneAction";
 import { riderCreateOneAction } from "./controllers/Rider/RiderCreateOneAction";
 import { riderDeleteOneAction } from "./controllers/Rider/RiderDeleteOneAction";
+import { loginAction } from "./controllers/Auth/LoginAction";
 
 const ROUTES = {
   RIDER: "/rider",
@@ -29,6 +30,7 @@ const ROUTES = {
   BRAND_DETAIL: "/brand/detail",
   ROUTE: "/route",
   ROUTE_DETAIL: "/route/detail",
+  AUTH_LOGIN: "/auth/login",
 };
 
 interface IRoute {
@@ -137,7 +139,7 @@ export const AppRoutes: Array<IRoute> = [
     path: ROUTES.BRAND_DETAIL,
     method: "get",
     action: brandGetOneAction,
-    middlewares: [],
+    middlewares: [authMiddlewareFunc],
   },
   {
     path: ROUTES.BRAND,
@@ -157,6 +159,12 @@ export const AppRoutes: Array<IRoute> = [
     path: ROUTES.BRAND,
     method: "patch",
     action: brandUpdateOneAction,
+    middlewares: [],
+  },
+  {
+    path: ROUTES.AUTH_LOGIN,
+    method: "post",
+    action: loginAction,
     middlewares: [],
   },
 ];
