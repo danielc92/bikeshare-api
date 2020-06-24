@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { getManager } from "typeorm";
-import { Bike } from "../entity";
+import { Bike } from "../../entity";
 import { QueryDeepPartialEntity } from "typeorm/query-builder/QueryPartialEntity";
 
 export async function bikeUpdateOneAction(
