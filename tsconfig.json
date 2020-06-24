@@ -5,7 +5,7 @@
     "module": "commonjs",
     "moduleResolution": "node",
     "outDir": "./build",
-    //  "strict": true,
+    "noUnusedLocals": true,
     "baseUrl": "src",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
