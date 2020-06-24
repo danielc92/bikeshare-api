@@ -1,23 +1,28 @@
-import { bikeGetAllAction } from "./controllers/BikeGetAllAction";
-import { bikeGetOneAction } from "./controllers/BikeGetOneAction";
-import { bikeDeleteOneAction } from "./controllers/BikeDeleteOneAction";
+import { bikeGetAllAction } from "./controllers/Bike/BikeGetAllAction";
+import { bikeGetOneAction } from "./controllers/Bike/BikeGetOneAction";
+import { bikeDeleteOneAction } from "./controllers/Bike/BikeDeleteOneAction";
 import { authMiddlewareFunc } from "./middleware/AuthDummyUser";
-import { bikeCreateOneAction } from "./controllers/BikeCreateOneAction";
+import { bikeCreateOneAction } from "./controllers/Bike/BikeCreateOneAction";
 import { Request, Response } from "express";
-import { bikeUpdateOneAction } from "./controllers/BikeUpdateOneAction";
-import { routeGetAllAction } from "./controllers/RouteGetAllAction";
-import { routeCreateOneAction } from "./controllers/RouteCreateOneAction";
-import { routeGetOneAction } from "./controllers/RouteGetOneAction";
-import { routeUpdateOneAction } from "./controllers/RouteUpdateOneAction";
-import { riderGetAllAction } from "./controllers/RiderGetAllAction";
-import { brandGetAllAction } from "./controllers/BrandGetAllAction";
-import { brandGetOneAction } from "./controllers/BrandGetOneAction";
-import { brandUpdateOneAction } from "./controllers/BrandUpdateOneAction";
-import { brandDeleteOneAction } from "./controllers/BrandDeleteOneAction";
-import { brandCreateOneAction } from "./controllers/BrandCreateOneAction";
+import { bikeUpdateOneAction } from "./controllers/Bike/BikeUpdateOneAction";
+import { routeGetAllAction } from "./controllers/Route/RouteGetAllAction";
+import { routeCreateOneAction } from "./controllers/Route/RouteCreateOneAction";
+import { routeGetOneAction } from "./controllers/Route/RouteGetOneAction";
+import { routeUpdateOneAction } from "./controllers/Route/RouteUpdateOneAction";
+import { riderGetAllAction } from "./controllers/Rider/RiderGetAllAction";
+import { brandGetAllAction } from "./controllers/Brand/BrandGetAllAction";
+import { brandGetOneAction } from "./controllers/Brand/BrandGetOneAction";
+import { brandUpdateOneAction } from "./controllers/Brand/BrandUpdateOneAction";
+import { brandDeleteOneAction } from "./controllers/Brand/BrandDeleteOneAction";
+import { brandCreateOneAction } from "./controllers/Brand/BrandCreateOneAction";
+import { riderGetOneAction } from "controllers/Rider/RiderGetOneAction";
+import { riderUpdateOneAction } from "controllers/Rider/RiderUpdateOneAction";
+import { riderCreateOneAction } from "controllers/Rider/RiderCreateOneAction";
+import { riderDeleteOneAction } from "controllers/Rider/RiderDeleteOneAction";
 
 const ROUTES = {
   RIDER: "/rider",
+  RIDER_DETAIL: "/rider/detail",
   BIKE: "/bike",
   BIKE_DETAIL: "/bike/detail",
   BRAND: "/brand",
@@ -92,6 +97,34 @@ export const AppRoutes: Array<IRoute> = [
     path: ROUTES.RIDER,
     method: "get",
     action: riderGetAllAction,
+    middlewares: [],
+  },
+
+  {
+    path: ROUTES.RIDER_DETAIL,
+    method: "get",
+    action: riderGetOneAction,
+    middlewares: [],
+  },
+
+  {
+    path: ROUTES.RIDER,
+    method: "patch",
+    action: riderUpdateOneAction,
+    middlewares: [],
+  },
+
+  {
+    path: ROUTES.RIDER,
+    method: "post",
+    action: riderCreateOneAction,
+    middlewares: [],
+  },
+
+  {
+    path: ROUTES.RIDER,
+    method: "delete",
+    action: riderDeleteOneAction,
     middlewares: [],
   },
   {
