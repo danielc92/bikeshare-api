@@ -19,7 +19,10 @@ export async function loginAction(request: Request, response: Response) {
 
     const token = await jwt.sign(
       {
-        email,
+        id: rider.id,
+        email: rider.email,
+        firstName: rider.firstName,
+        lastName: rider.lastName,
       },
       "secret",
       {

@@ -13,6 +13,7 @@ export async function authMiddlewareFunc(
     }
 
     const decoded = await jwt.verify(token as string, "secret");
+    request.user = decoded;
     next();
   } catch (error) {
     return response.status(400).json({ message: error.toString() });
