@@ -7,11 +7,12 @@ export async function contactCreateOneAction(
   response: Response
 ) {
   try {
-    const { enquiryContent, enquiryType } = request.body;
+    const { enquiryContent, enquiryType, email } = request.body;
 
     const newRecord = new Contact();
     newRecord.enquiryContent = enquiryContent;
     newRecord.enquiryType = enquiryType;
+    newRecord.email = email;
 
     const results = await getManager().save(newRecord);
     return response.send(results);
