@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { getManager } from "typeorm";
-import { Contact } from "@entity";
+import { Contact } from "../../entity";
 
 export async function contactCreateOneAction(
   request: Request,
