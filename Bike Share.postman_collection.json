@@ -884,6 +884,173 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "{{host}}/pack",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "token",
+						"type": "text",
+						"value": "{{token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"totalDistance\": 123123,\r\n    \"area\": \"Collingwood\",\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/pack",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"pack"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "{{host}}/pack",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "token",
+						"type": "text",
+						"value": "{{token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"city\": \"sunshine\",\r\n    \"phone\": \"00654654\",\r\n    \"firstName\": \"Daniel\",\r\n    \"lastName\": \"Corcoran\",\r\n    \"password\":\"daniel12345\",\r\n    \"email\":\"daniel12345@daniel12345.com\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/pack",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"pack"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "{{host}}/pack",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "token",
+						"type": "text",
+						"value": "{{token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"city\": \"sunshine\",\r\n    \"phone\": \"00654654\",\r\n    \"firstName\": \"Daniel\",\r\n    \"lastName\": \"Corcoran\",\r\n    \"password\":\"daniel12345\",\r\n    \"email\":\"daniel12345@daniel12345.com\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/pack",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"pack"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "{{host}}/pack",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "token",
+						"type": "text",
+						"value": "{{token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"city\": \"sunshine\",\r\n    \"phone\": \"00654654\",\r\n    \"firstName\": \"Daniel\",\r\n    \"lastName\": \"Corcoran\",\r\n    \"password\":\"daniel12345\",\r\n    \"email\":\"daniel12345@daniel12345.com\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/pack",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"pack"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "{{host}}/pack/detail",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "token",
+						"type": "text",
+						"value": "{{token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"city\": \"sunshine\",\r\n    \"phone\": \"00654654\",\r\n    \"firstName\": \"Daniel\",\r\n    \"lastName\": \"Corcoran\",\r\n    \"password\":\"daniel12345\",\r\n    \"email\":\"daniel12345@daniel12345.com\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/pack/detail",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"pack",
+						"detail"
+					]
+				}
+			},
+			"response": []
 		}
 	],
 	"protocolProfileBehavior": {}
