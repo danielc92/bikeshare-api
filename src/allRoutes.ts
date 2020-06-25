@@ -27,6 +27,11 @@ import { contactCreateOneAction } from "./controllers/Contact/ContactCreateOneAc
 import { contactDeleteOneAction } from "./controllers/Contact/ContactDeleteOneAction";
 import { contactUpdateOneAction } from "./controllers/Contact/ContactUpdateOneAction";
 import { ApiRouteEnum, MethodEnum } from "./entity/Permission";
+import { packUpdateOneAction } from "./controllers/Pack/PackUpdateOneAction";
+import { packDeleteOneAction } from "./controllers/Pack/PackDeleteOneAction";
+import { packCreateOneAction } from "./controllers/Pack/PackCreateOneAction";
+import { packGetOneAction } from "./controllers/Pack/PackGetOneAction";
+import { packGetAllAction } from "./controllers/Pack/PackGetAllAction";
 
 interface IRoute {
   path: ApiRouteEnum;
@@ -195,5 +200,38 @@ export const AppRoutes: Array<IRoute> = [
     method: MethodEnum.POST,
     action: loginAction,
     middlewares: [roleAndPermissionMiddleware],
+  },
+
+  {
+    path: ApiRouteEnum.PACK,
+    method: MethodEnum.GET,
+    action: packGetAllAction,
+    middlewares: [roleAndPermissionMiddleware],
+  },
+  {
+    path: ApiRouteEnum.PACK_DETAIL,
+    method: MethodEnum.GET,
+    action: packGetOneAction,
+    middlewares: [roleAndPermissionMiddleware],
+  },
+  {
+    path: ApiRouteEnum.PACK,
+    method: MethodEnum.POST,
+    action: packCreateOneAction,
+    middlewares: [authMiddlewareFunc, roleAndPermissionMiddleware],
+  },
+
+  {
+    path: ApiRouteEnum.PACK,
+    method: MethodEnum.DELETE,
+    action: packDeleteOneAction,
+    middlewares: [authMiddlewareFunc, roleAndPermissionMiddleware],
+  },
+
+  {
+    path: ApiRouteEnum.PACK,
+    method: MethodEnum.PATCH,
+    action: packUpdateOneAction,
+    middlewares: [authMiddlewareFunc, roleAndPermissionMiddleware],
   },
 ];
