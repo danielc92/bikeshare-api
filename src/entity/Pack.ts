@@ -14,8 +14,11 @@ export class Pack {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column()
+  @Column({ nullable: true })
   packName: string;
+
+  @Column({ nullable: true })
+  packMotto: string;
 
   @ManyToOne((type) => Rider, (rider) => rider.myPacks)
   rider: Rider;
