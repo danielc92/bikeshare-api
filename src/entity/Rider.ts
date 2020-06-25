@@ -7,10 +7,12 @@ import {
   JoinTable,
   OneToMany,
   CreateDateColumn,
+  ManyToOne,
 } from "typeorm";
 import { Route } from "./Route";
 import { Feedback } from "./Feedback";
 import { Pack } from "./Pack";
+import { Role } from "./Role";
 
 @Entity()
 export class Rider {
@@ -46,6 +48,9 @@ export class Rider {
 
   @OneToMany((type) => Pack, (pack) => pack.rider)
   myPacks: Pack[];
+
+  @ManyToOne((type) => Role, (role) => role.riders)
+  role: Role;
 
   @ManyToMany((type) => Pack, (pack) => pack.riders)
   @JoinTable()
