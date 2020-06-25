@@ -28,7 +28,7 @@ export async function loginAction(request: Request, response: Response) {
       },
       "secret",
       {
-        expiresIn: 3600,
+        expiresIn: 60 * 60 * 16, // 16 Hours
       }
     );
     return response.status(200).json({

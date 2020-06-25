@@ -2,7 +2,6 @@ import "reflect-metadata";
 import { createConnection } from "typeorm";
 import * as express from "express";
 import { AppRoutes } from "./allRoutes";
-import { roleAndPermissionMiddleware } from "./middleware/CheckRoleAndPermission";
 createConnection()
   .then(async (connection) => {
     const app = express();
@@ -10,7 +9,7 @@ createConnection()
     AppRoutes.forEach((route) => {
       app[route.method](
         route.path,
-        [...route.middlewares, roleAndPermissionMiddleware],
+        route.middlewares,
         (
           request: express.Request,
           response: express.Response,
