@@ -12,7 +12,9 @@ export async function loginAction(request: Request, response: Response) {
       where: {
         email,
       },
+      relations: ["role"],
     });
+    console.log(rider);
     const hashedPassword = await bcrypt.compare(password, rider.password);
     if (!hashedPassword)
       return response.status(400).json({ message: "Incorrect credentials" });
@@ -23,6 +25,7 @@ export async function loginAction(request: Request, response: Response) {
         email: rider.email,
         firstName: rider.firstName,
         lastName: rider.lastName,
+        role: rider.role.role,
       },
       "secret",
       {
