@@ -27,6 +27,8 @@ export enum ApiRouteEnum {
   AUTH_LOGIN = "/auth/login",
   CONTACT = "/contact",
   CONTACT_DETAIL = "/contact/detail",
+  PACK = "/pack",
+  PACK_DETAIL = "/pack",
 }
 @Entity()
 export class Permission {
