@@ -1,13 +1,15 @@
 import { NextFunction, Response, Request } from "express";
 import * as jwt from "jsonwebtoken";
+import { RoleEnum } from "entity/Role";
 
-interface IDecodedRider {
+export interface IDecodedRider {
   id: number;
   firstName: string;
   lastName: string;
   email: string;
+  role: RoleEnum;
 }
-jwt.TokenExpiredError;
+
 export async function authMiddlewareFunc(
   request: Request,
   response: Response,
@@ -20,6 +22,8 @@ export async function authMiddlewareFunc(
     }
 
     const decoded = await jwt.verify(token as string, "secret");
+    if (!decoded)
+      return response.status(400).json({ message: "Failed verification" });
     request.user = decoded as IDecodedRider;
     next();
   } catch (error) {
