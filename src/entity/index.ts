@@ -5,3 +5,5 @@ export { Route } from "./Route";
 export { Feedback } from "./Feedback";
 export { Contact } from "./Contact";
 export { Pack } from "./Pack";
+export { Role } from "./Role";
+export { Permission } from "./Permission";
