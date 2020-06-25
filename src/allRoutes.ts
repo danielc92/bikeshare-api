@@ -20,6 +20,7 @@ import { riderUpdateOneAction } from "./controllers/Rider/RiderUpdateOneAction";
 import { riderCreateOneAction } from "./controllers/Rider/RiderCreateOneAction";
 import { riderDeleteOneAction } from "./controllers/Rider/RiderDeleteOneAction";
 import { loginAction } from "./controllers/Auth/LoginAction";
+import { roleAndPermissionMiddleware } from "./middleware/CheckRoleAndPermission";
 
 const ROUTES = {
   RIDER: "/rider",
@@ -45,126 +46,126 @@ export const AppRoutes: Array<IRoute> = [
     path: ROUTES.BIKE,
     method: "get",
     action: bikeGetAllAction,
-    middlewares: [],
+    middlewares: [roleAndPermissionMiddleware],
   },
   {
     path: ROUTES.BIKE_DETAIL,
     method: "get",
     action: bikeGetOneAction,
-    middlewares: [],
+    middlewares: [roleAndPermissionMiddleware],
   },
   {
     path: ROUTES.BIKE,
     method: "delete",
     action: bikeDeleteOneAction,
-    middlewares: [],
+    middlewares: [authMiddlewareFunc, roleAndPermissionMiddleware],
   },
   {
     path: ROUTES.BIKE,
     method: "post",
     action: bikeCreateOneAction,
-    middlewares: [],
+    middlewares: [authMiddlewareFunc, roleAndPermissionMiddleware],
   },
   {
     path: ROUTES.BIKE,
     method: "patch",
     action: bikeUpdateOneAction,
-    middlewares: [],
+    middlewares: [authMiddlewareFunc, roleAndPermissionMiddleware],
   },
   {
     path: ROUTES.ROUTE,
     method: "get",
     action: routeGetAllAction,
-    middlewares: [],
+    middlewares: [roleAndPermissionMiddleware],
   },
   {
     path: ROUTES.ROUTE,
     method: "post",
     action: routeCreateOneAction,
-    middlewares: [],
+    middlewares: [authMiddlewareFunc, roleAndPermissionMiddleware],
   },
   {
     path: ROUTES.ROUTE_DETAIL,
     method: "get",
     action: routeGetOneAction,
-    middlewares: [],
+    middlewares: [roleAndPermissionMiddleware],
   },
   {
     path: ROUTES.ROUTE,
     method: "patch",
     action: routeUpdateOneAction,
-    middlewares: [],
+    middlewares: [authMiddlewareFunc, roleAndPermissionMiddleware],
   },
   {
     path: ROUTES.RIDER,
     method: "get",
     action: riderGetAllAction,
-    middlewares: [],
+    middlewares: [roleAndPermissionMiddleware],
   },
 
   {
     path: ROUTES.RIDER_DETAIL,
     method: "get",
     action: riderGetOneAction,
-    middlewares: [],
+    middlewares: [roleAndPermissionMiddleware],
   },
 
   {
     path: ROUTES.RIDER,
     method: "patch",
     action: riderUpdateOneAction,
-    middlewares: [],
+    middlewares: [authMiddlewareFunc, roleAndPermissionMiddleware],
   },
 
   {
     path: ROUTES.RIDER,
     method: "post",
     action: riderCreateOneAction,
-    middlewares: [],
+    middlewares: [authMiddlewareFunc, roleAndPermissionMiddleware],
   },
 
   {
     path: ROUTES.RIDER,
     method: "delete",
     action: riderDeleteOneAction,
-    middlewares: [],
+    middlewares: [authMiddlewareFunc, roleAndPermissionMiddleware],
   },
   {
     path: ROUTES.BRAND,
     method: "get",
     action: brandGetAllAction,
-    middlewares: [],
+    middlewares: [roleAndPermissionMiddleware],
   },
   {
     path: ROUTES.BRAND_DETAIL,
     method: "get",
     action: brandGetOneAction,
-    middlewares: [authMiddlewareFunc],
+    middlewares: [roleAndPermissionMiddleware],
   },
   {
     path: ROUTES.BRAND,
     method: "post",
     action: brandCreateOneAction,
-    middlewares: [],
+    middlewares: [authMiddlewareFunc, roleAndPermissionMiddleware],
   },
 
   {
     path: ROUTES.BRAND,
     method: "delete",
     action: brandDeleteOneAction,
-    middlewares: [],
+    middlewares: [authMiddlewareFunc, roleAndPermissionMiddleware],
   },
 
   {
     path: ROUTES.BRAND,
     method: "patch",
     action: brandUpdateOneAction,
-    middlewares: [],
+    middlewares: [authMiddlewareFunc, roleAndPermissionMiddleware],
   },
   {
     path: ROUTES.AUTH_LOGIN,
     method: "post",
     action: loginAction,
-    middlewares: [],
+    middlewares: [roleAndPermissionMiddleware],
   },
 ];
