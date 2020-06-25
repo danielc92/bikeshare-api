@@ -1,0 +1,890 @@
+{
+	"info": {
+		"_postman_id": "b6baa632-95b2-470f-b662-641cf19e877c",
+		"name": "Bike Share",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "{{host}}/auth/login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\":\"daniel12345@daniel12345.com\",\r\n    \"password\": \"daniel12345\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/auth/login",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "{{host}}/brand",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "token",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"title\": \"Daniels awesome brand\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/brand",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"brand"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "{{host}}/brand",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "token",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"city\": \"sunshine\",\r\n    \"phone\": \"00654654\",\r\n    \"firstName\": \"Daniel\",\r\n    \"lastName\": \"Corcoran\",\r\n    \"password\":\"daniel12345\",\r\n    \"email\":\"daniel12345@daniel12345.com\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/brand",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"brand"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "{{host}}/brand",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "token",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"city\": \"sunshine\",\r\n    \"phone\": \"00654654\",\r\n    \"firstName\": \"Daniel\",\r\n    \"lastName\": \"Corcoran\",\r\n    \"password\":\"daniel12345\",\r\n    \"email\":\"daniel12345@daniel12345.com\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/brand",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"brand"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "{{host}}/brand",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "token",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"city\": \"sunshine\",\r\n    \"phone\": \"00654654\",\r\n    \"firstName\": \"Daniel\",\r\n    \"lastName\": \"Corcoran\",\r\n    \"password\":\"daniel12345\",\r\n    \"email\":\"daniel12345@daniel12345.com\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/brand",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"brand"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "{{host}}/brand/detail",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "token",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"city\": \"sunshine\",\r\n    \"phone\": \"00654654\",\r\n    \"firstName\": \"Daniel\",\r\n    \"lastName\": \"Corcoran\",\r\n    \"password\":\"daniel12345\",\r\n    \"email\":\"daniel12345@daniel12345.com\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/brand/detail?id=3",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"brand",
+						"detail"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "3"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "{{host}}/bike",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "token",
+						"type": "text",
+						"value": "{{token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"city\": \"sunshine\",\r\n    \"phone\": \"00654654\",\r\n    \"firstName\": \"Daniel\",\r\n    \"lastName\": \"Corcoran\",\r\n    \"password\":\"daniel12345\",\r\n    \"email\":\"daniel12345@daniel12345.com\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/bike",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"bike"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "{{host}}/bike",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "token",
+						"type": "text",
+						"value": "{{token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"city\": \"sunshine\",\r\n    \"phone\": \"00654654\",\r\n    \"firstName\": \"Daniel\",\r\n    \"lastName\": \"Corcoran\",\r\n    \"password\":\"daniel12345\",\r\n    \"email\":\"daniel12345@daniel12345.com\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/bike",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"bike"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "{{host}}/bike",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "token",
+						"type": "text",
+						"value": "{{token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"city\": \"sunshine\",\r\n    \"phone\": \"00654654\",\r\n    \"firstName\": \"Daniel\",\r\n    \"lastName\": \"Corcoran\",\r\n    \"password\":\"daniel12345\",\r\n    \"email\":\"daniel12345@daniel12345.com\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/bike",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"bike"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "{{host}}/bike",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "token",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"city\": \"sunshine\",\r\n    \"phone\": \"00654654\",\r\n    \"firstName\": \"Daniel\",\r\n    \"lastName\": \"Corcoran\",\r\n    \"password\":\"daniel12345\",\r\n    \"email\":\"daniel12345@daniel12345.com\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/bike",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"bike"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "{{host}}/bike/detail",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "token",
+						"type": "text",
+						"value": "{{token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"city\": \"sunshine\",\r\n    \"phone\": \"00654654\",\r\n    \"firstName\": \"Daniel\",\r\n    \"lastName\": \"Corcoran\",\r\n    \"password\":\"daniel12345\",\r\n    \"email\":\"daniel12345@daniel12345.com\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/bike/detail?id=",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"bike",
+						"detail"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": ""
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "{{host}}/rider",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "token",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"city\": \"sunshine\",\r\n    \"phone\": \"00654654\",\r\n    \"firstName\": \"Daniel\",\r\n    \"lastName\": \"Corcoran\",\r\n    \"password\":\"daniel12345\",\r\n    \"email\":\"daniel12345@daniel12345.com\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/rider",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"rider"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "{{host}}/rider",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "token",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"city\": \"sunshine\",\r\n    \"phone\": \"00654654\",\r\n    \"firstName\": \"Daniel\",\r\n    \"lastName\": \"Corcoran\",\r\n    \"password\":\"daniel12345\",\r\n    \"email\":\"daniel12345@daniel12345.com\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/rider",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"rider"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "{{host}}/rider",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "token",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"city\": \"sunshine\",\r\n    \"phone\": \"00654654\",\r\n    \"firstName\": \"Daniel\",\r\n    \"lastName\": \"Corcoran\",\r\n    \"password\":\"daniel12345\",\r\n    \"email\":\"daniel12345@daniel12345.com\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/rider",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"rider"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "{{host}}/rider",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "token",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"city\": \"sunshine\",\r\n    \"phone\": \"00654654\",\r\n    \"firstName\": \"Daniel\",\r\n    \"lastName\": \"Corcoran\",\r\n    \"password\":\"daniel12345\",\r\n    \"email\":\"daniel12345@daniel12345.com\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/rider",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"rider"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "{{host}}/rider/detail",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "token",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"city\": \"sunshine\",\r\n    \"phone\": \"00654654\",\r\n    \"firstName\": \"Daniel\",\r\n    \"lastName\": \"Corcoran\",\r\n    \"password\":\"daniel12345\",\r\n    \"email\":\"daniel12345@daniel12345.com\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/rider/detail?id=",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"rider",
+						"detail"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": ""
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "{{host}}/route",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "token",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"totalDistance\": 123123,\r\n    \"area\": \"Collingwood\",\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/route",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"route"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "{{host}}/route",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "token",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"city\": \"sunshine\",\r\n    \"phone\": \"00654654\",\r\n    \"firstName\": \"Daniel\",\r\n    \"lastName\": \"Corcoran\",\r\n    \"password\":\"daniel12345\",\r\n    \"email\":\"daniel12345@daniel12345.com\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/route",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"route"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "{{host}}/route",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "token",
+						"type": "text",
+						"value": "{{token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"city\": \"sunshine\",\r\n    \"phone\": \"00654654\",\r\n    \"firstName\": \"Daniel\",\r\n    \"lastName\": \"Corcoran\",\r\n    \"password\":\"daniel12345\",\r\n    \"email\":\"daniel12345@daniel12345.com\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/route",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"route"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "{{host}}/route",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "token",
+						"type": "text",
+						"value": "{{token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"city\": \"sunshine\",\r\n    \"phone\": \"00654654\",\r\n    \"firstName\": \"Daniel\",\r\n    \"lastName\": \"Corcoran\",\r\n    \"password\":\"daniel12345\",\r\n    \"email\":\"daniel12345@daniel12345.com\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/route",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"route"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "{{host}}/route/detail",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "token",
+						"type": "text",
+						"value": "{{token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"city\": \"sunshine\",\r\n    \"phone\": \"00654654\",\r\n    \"firstName\": \"Daniel\",\r\n    \"lastName\": \"Corcoran\",\r\n    \"password\":\"daniel12345\",\r\n    \"email\":\"daniel12345@daniel12345.com\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/contact/route",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"contact",
+						"route"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "{{host}}/contact",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "token",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"totalDistance\": 123123,\r\n    \"area\": \"Collingwood\",\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/contact",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"contact"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "{{host}}/contact",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "token",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"city\": \"sunshine\",\r\n    \"phone\": \"00654654\",\r\n    \"firstName\": \"Daniel\",\r\n    \"lastName\": \"Corcoran\",\r\n    \"password\":\"daniel12345\",\r\n    \"email\":\"daniel12345@daniel12345.com\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/contact",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"contact"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "{{host}}/contact",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "token",
+						"type": "text",
+						"value": "{{token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"city\": \"sunshine\",\r\n    \"phone\": \"00654654\",\r\n    \"firstName\": \"Daniel\",\r\n    \"lastName\": \"Corcoran\",\r\n    \"password\":\"daniel12345\",\r\n    \"email\":\"daniel12345@daniel12345.com\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/contact",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"contact"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "{{host}}/contact",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "token",
+						"type": "text",
+						"value": "{{token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"city\": \"sunshine\",\r\n    \"phone\": \"00654654\",\r\n    \"firstName\": \"Daniel\",\r\n    \"lastName\": \"Corcoran\",\r\n    \"password\":\"daniel12345\",\r\n    \"email\":\"daniel12345@daniel12345.com\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/contact",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"contact"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "{{host}}/contact/detail",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "token",
+						"type": "text",
+						"value": "{{token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"city\": \"sunshine\",\r\n    \"phone\": \"00654654\",\r\n    \"firstName\": \"Daniel\",\r\n    \"lastName\": \"Corcoran\",\r\n    \"password\":\"daniel12345\",\r\n    \"email\":\"daniel12345@daniel12345.com\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/contact/detail",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"contact",
+						"detail"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
