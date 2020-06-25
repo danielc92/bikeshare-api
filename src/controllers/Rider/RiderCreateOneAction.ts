@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { getManager } from "typeorm";
-import { Rider } from "../../entity";
+import { Rider, Role } from "../../entity";
 import * as bcrypt from "bcrypt";
 export async function riderCreateOneAction(
   request: Request,
@@ -17,6 +17,10 @@ export async function riderCreateOneAction(
     const hashedPassword = await bcrypt.hash(password, 10);
     newRecord.password = hashedPassword;
     newRecord.email = email;
+
+    const roleRepo = getManager().getRepository(Role);
+    const defaultRole = await roleRepo.findOne({ where: { role: "RIDER" } });
+    newRecord.role = defaultRole;
 
     const results = await getManager().save(newRecord);
     return response.send(results);
