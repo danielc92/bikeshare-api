@@ -1,13 +1,12 @@
 import { NextFunction, Response, Request } from "express";
 import * as jwt from "jsonwebtoken";
-import { RoleEnum } from "entity/Role";
 
 export interface IDecodedRider {
   id: number;
   firstName: string;
   lastName: string;
   email: string;
-  role: RoleEnum;
+  role: string;
 }
 
 export async function authMiddlewareFunc(
