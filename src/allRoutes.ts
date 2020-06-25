@@ -31,6 +31,7 @@ const ROUTES = {
   BRAND_DETAIL: "/brand/detail",
   ROUTE: "/route",
   ROUTE_DETAIL: "/route/detail",
+
   AUTH_LOGIN: "/auth/login",
 };
 
