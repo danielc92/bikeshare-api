@@ -26,186 +26,173 @@ import { contactGetOneAction } from "./controllers/Contact/ContactGetOneAction";
 import { contactCreateOneAction } from "./controllers/Contact/ContactCreateOneAction";
 import { contactDeleteOneAction } from "./controllers/Contact/ContactDeleteOneAction";
 import { contactUpdateOneAction } from "./controllers/Contact/ContactUpdateOneAction";
-
-const ROUTES = {
-  RIDER: "/rider",
-  RIDER_DETAIL: "/rider/detail",
-  BIKE: "/bike",
-  BIKE_DETAIL: "/bike/detail",
-  BRAND: "/brand",
-  BRAND_DETAIL: "/brand/detail",
-  ROUTE: "/route",
-  ROUTE_DETAIL: "/route/detail",
-  CONTACT_DETAIL: "/contact/detail",
-  CONTACT: "/contact",
-  AUTH_LOGIN: "/auth/login",
-};
+import { ApiRouteEnum, MethodEnum } from "./entity/Permission";
 
 interface IRoute {
-  path: string;
+  path: ApiRouteEnum;
   middlewares: any[];
-  method: "post" | "patch" | "get" | "delete";
+  method: MethodEnum;
   action: (request: Request, response: Response) => Promise<any>;
 }
 
 export const AppRoutes: Array<IRoute> = [
   {
-    path: ROUTES.BIKE,
-    method: "get",
+    path: ApiRouteEnum.BIKE,
+    method: MethodEnum.GET,
     action: bikeGetAllAction,
     middlewares: [roleAndPermissionMiddleware],
   },
   {
-    path: ROUTES.BIKE_DETAIL,
-    method: "get",
+    path: ApiRouteEnum.BIKE_DETAIL,
+    method: MethodEnum.GET,
     action: bikeGetOneAction,
     middlewares: [roleAndPermissionMiddleware],
   },
   {
-    path: ROUTES.BIKE,
-    method: "delete",
+    path: ApiRouteEnum.BIKE,
+    method: MethodEnum.DELETE,
     action: bikeDeleteOneAction,
     middlewares: [authMiddlewareFunc, roleAndPermissionMiddleware],
   },
   {
-    path: ROUTES.BIKE,
-    method: "post",
+    path: ApiRouteEnum.BIKE,
+    method: MethodEnum.POST,
     action: bikeCreateOneAction,
     middlewares: [authMiddlewareFunc, roleAndPermissionMiddleware],
   },
   {
-    path: ROUTES.BIKE,
-    method: "patch",
+    path: ApiRouteEnum.BIKE,
+    method: MethodEnum.PATCH,
     action: bikeUpdateOneAction,
     middlewares: [authMiddlewareFunc, roleAndPermissionMiddleware],
   },
   {
-    path: ROUTES.ROUTE,
-    method: "get",
+    path: ApiRouteEnum.ROUTE,
+    method: MethodEnum.GET,
     action: routeGetAllAction,
     middlewares: [roleAndPermissionMiddleware],
   },
   {
-    path: ROUTES.ROUTE,
-    method: "post",
+    path: ApiRouteEnum.ROUTE,
+    method: MethodEnum.POST,
     action: routeCreateOneAction,
     middlewares: [authMiddlewareFunc, roleAndPermissionMiddleware],
   },
   {
-    path: ROUTES.ROUTE_DETAIL,
-    method: "get",
+    path: ApiRouteEnum.ROUTE_DETAIL,
+    method: MethodEnum.GET,
     action: routeGetOneAction,
     middlewares: [roleAndPermissionMiddleware],
   },
   {
-    path: ROUTES.ROUTE,
-    method: "patch",
+    path: ApiRouteEnum.ROUTE,
+    method: MethodEnum.PATCH,
     action: routeUpdateOneAction,
     middlewares: [authMiddlewareFunc, roleAndPermissionMiddleware],
   },
   {
-    path: ROUTES.RIDER,
-    method: "get",
+    path: ApiRouteEnum.RIDER,
+    method: MethodEnum.GET,
     action: riderGetAllAction,
     middlewares: [roleAndPermissionMiddleware],
   },
 
   {
-    path: ROUTES.RIDER_DETAIL,
-    method: "get",
+    path: ApiRouteEnum.RIDER_DETAIL,
+    method: MethodEnum.GET,
     action: riderGetOneAction,
     middlewares: [roleAndPermissionMiddleware],
   },
 
   {
-    path: ROUTES.RIDER,
-    method: "patch",
+    path: ApiRouteEnum.RIDER,
+    method: MethodEnum.PATCH,
     action: riderUpdateOneAction,
     middlewares: [authMiddlewareFunc, roleAndPermissionMiddleware],
   },
 
   {
-    path: ROUTES.RIDER,
-    method: "post",
+    path: ApiRouteEnum.RIDER,
+    method: MethodEnum.POST,
     action: riderCreateOneAction,
     middlewares: [authMiddlewareFunc, roleAndPermissionMiddleware],
   },
 
   {
-    path: ROUTES.RIDER,
-    method: "delete",
+    path: ApiRouteEnum.RIDER,
+    method: MethodEnum.DELETE,
     action: riderDeleteOneAction,
     middlewares: [authMiddlewareFunc, roleAndPermissionMiddleware],
   },
   {
-    path: ROUTES.BRAND,
-    method: "get",
+    path: ApiRouteEnum.BRAND,
+    method: MethodEnum.GET,
     action: brandGetAllAction,
     middlewares: [roleAndPermissionMiddleware],
   },
   {
-    path: ROUTES.BRAND_DETAIL,
-    method: "get",
+    path: ApiRouteEnum.BRAND_DETAIL,
+    method: MethodEnum.GET,
     action: brandGetOneAction,
     middlewares: [roleAndPermissionMiddleware],
   },
   {
-    path: ROUTES.BRAND,
-    method: "post",
+    path: ApiRouteEnum.BRAND,
+    method: MethodEnum.POST,
     action: brandCreateOneAction,
     middlewares: [authMiddlewareFunc, roleAndPermissionMiddleware],
   },
 
   {
-    path: ROUTES.BRAND,
-    method: "delete",
+    path: ApiRouteEnum.BRAND,
+    method: MethodEnum.DELETE,
     action: brandDeleteOneAction,
     middlewares: [authMiddlewareFunc, roleAndPermissionMiddleware],
   },
 
   {
-    path: ROUTES.BRAND,
-    method: "patch",
+    path: ApiRouteEnum.BRAND,
+    method: MethodEnum.PATCH,
     action: brandUpdateOneAction,
     middlewares: [authMiddlewareFunc, roleAndPermissionMiddleware],
   },
 
   {
-    path: ROUTES.CONTACT,
-    method: "get",
+    path: ApiRouteEnum.CONTACT,
+    method: MethodEnum.GET,
     action: contactGetAllAction,
     middlewares: [roleAndPermissionMiddleware],
   },
   {
-    path: ROUTES.CONTACT_DETAIL,
-    method: "get",
+    path: ApiRouteEnum.CONTACT_DETAIL,
+    method: MethodEnum.GET,
     action: contactGetOneAction,
     middlewares: [roleAndPermissionMiddleware],
   },
   {
-    path: ROUTES.CONTACT,
-    method: "post",
+    path: ApiRouteEnum.CONTACT,
+    method: MethodEnum.POST,
     action: contactCreateOneAction,
     middlewares: [authMiddlewareFunc, roleAndPermissionMiddleware],
   },
 
   {
-    path: ROUTES.CONTACT,
-    method: "delete",
+    path: ApiRouteEnum.CONTACT,
+    method: MethodEnum.DELETE,
     action: contactDeleteOneAction,
     middlewares: [authMiddlewareFunc, roleAndPermissionMiddleware],
   },
 
   {
-    path: ROUTES.CONTACT,
-    method: "patch",
+    path: ApiRouteEnum.CONTACT,
+    method: MethodEnum.PATCH,
     action: contactUpdateOneAction,
     middlewares: [authMiddlewareFunc, roleAndPermissionMiddleware],
   },
 
   {
-    path: ROUTES.AUTH_LOGIN,
-    method: "post",
+    path: ApiRouteEnum.AUTH_LOGIN,
+    method: MethodEnum.POST,
     action: loginAction,
     middlewares: [roleAndPermissionMiddleware],
   },
