@@ -21,6 +21,11 @@ import { riderCreateOneAction } from "./controllers/Rider/RiderCreateOneAction";
 import { riderDeleteOneAction } from "./controllers/Rider/RiderDeleteOneAction";
 import { loginAction } from "./controllers/Auth/LoginAction";
 import { roleAndPermissionMiddleware } from "./middleware/CheckRoleAndPermission";
+import { contactGetAllAction } from "./controllers/Contact/ContactGetAllAction";
+import { contactGetOneAction } from "./controllers/Contact/ContactGetOneAction";
+import { contactCreateOneAction } from "./controllers/Contact/ContactCreateOneAction";
+import { contactDeleteOneAction } from "./controllers/Contact/ContactDeleteOneAction";
+import { contactUpdateOneAction } from "./controllers/Contact/ContactUpdateOneAction";
 
 const ROUTES = {
   RIDER: "/rider",
@@ -31,7 +36,8 @@ const ROUTES = {
   BRAND_DETAIL: "/brand/detail",
   ROUTE: "/route",
   ROUTE_DETAIL: "/route/detail",
-
+  CONTACT_DETAIL: "/contact/detail",
+  CONTACT: "/contact",
   AUTH_LOGIN: "/auth/login",
 };
 
@@ -163,6 +169,40 @@ export const AppRoutes: Array<IRoute> = [
     action: brandUpdateOneAction,
     middlewares: [authMiddlewareFunc, roleAndPermissionMiddleware],
   },
+
+  {
+    path: ROUTES.CONTACT,
+    method: "get",
+    action: contactGetAllAction,
+    middlewares: [roleAndPermissionMiddleware],
+  },
+  {
+    path: ROUTES.CONTACT_DETAIL,
+    method: "get",
+    action: contactGetOneAction,
+    middlewares: [roleAndPermissionMiddleware],
+  },
+  {
+    path: ROUTES.CONTACT,
+    method: "post",
+    action: contactCreateOneAction,
+    middlewares: [authMiddlewareFunc, roleAndPermissionMiddleware],
+  },
+
+  {
+    path: ROUTES.CONTACT,
+    method: "delete",
+    action: contactDeleteOneAction,
+    middlewares: [authMiddlewareFunc, roleAndPermissionMiddleware],
+  },
+
+  {
+    path: ROUTES.CONTACT,
+    method: "patch",
+    action: contactUpdateOneAction,
+    middlewares: [authMiddlewareFunc, roleAndPermissionMiddleware],
+  },
+
   {
     path: ROUTES.AUTH_LOGIN,
     method: "post",
