@@ -32,6 +32,9 @@ import { packDeleteOneAction } from "./controllers/Pack/PackDeleteOneAction";
 import { packCreateOneAction } from "./controllers/Pack/PackCreateOneAction";
 import { packGetOneAction } from "./controllers/Pack/PackGetOneAction";
 import { packGetAllAction } from "./controllers/Pack/PackGetAllAction";
+import { myPacksGetOneAction } from "./controllers/MyPacks/MyPacksGetOneAction";
+import { myPacksDeleteOneAction } from "./controllers/MyPacks/MyPacksDeleteOneAction";
+import { myPacksAddOneAction } from "./controllers/MyPacks/MyPacksAddOneAction";
 
 interface IRoute {
   path: ApiRouteEnum;
@@ -232,6 +235,25 @@ export const AppRoutes: Array<IRoute> = [
     path: ApiRouteEnum.PACK,
     method: MethodEnum.PATCH,
     action: packUpdateOneAction,
+    middlewares: [authMiddlewareFunc, roleAndPermissionMiddleware],
+  },
+  {
+    path: ApiRouteEnum.MY_PACKS,
+    method: MethodEnum.GET,
+    action: myPacksGetOneAction,
+    middlewares: [authMiddlewareFunc, roleAndPermissionMiddleware],
+  },
+  {
+    path: ApiRouteEnum.MY_PACKS,
+    method: MethodEnum.PATCH,
+    action: myPacksAddOneAction,
+    middlewares: [authMiddlewareFunc, roleAndPermissionMiddleware],
+  },
+
+  {
+    path: ApiRouteEnum.MY_PACKS,
+    method: MethodEnum.DELETE,
+    action: myPacksDeleteOneAction,
     middlewares: [authMiddlewareFunc, roleAndPermissionMiddleware],
   },
 ];
