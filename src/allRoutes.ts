@@ -35,6 +35,9 @@ import { packGetAllAction } from "./controllers/Pack/PackGetAllAction";
 import { myPacksGetOneAction } from "./controllers/MyPacks/MyPacksGetOneAction";
 import { myPacksDeleteOneAction } from "./controllers/MyPacks/MyPacksDeleteOneAction";
 import { myPacksAddOneAction } from "./controllers/MyPacks/MyPacksAddOneAction";
+import { myRoutesGetOneAction } from "./controllers/MyRoutes/MyRoutesGetOneAction";
+import { myRoutesAddOneAction } from "./controllers/MyRoutes/MyRoutesAddOneAction";
+import { myRoutesDeleteOneAction } from "./controllers/MyRoutes/MyRoutesDeleteOneAction";
 
 interface IRoute {
   path: ApiRouteEnum;
@@ -254,6 +257,26 @@ export const AppRoutes: Array<IRoute> = [
     path: ApiRouteEnum.MY_PACKS,
     method: MethodEnum.DELETE,
     action: myPacksDeleteOneAction,
+    middlewares: [authMiddlewareFunc, roleAndPermissionMiddleware],
+  },
+
+  {
+    path: ApiRouteEnum.MY_ROUTES,
+    method: MethodEnum.GET,
+    action: myRoutesGetOneAction,
+    middlewares: [authMiddlewareFunc, roleAndPermissionMiddleware],
+  },
+  {
+    path: ApiRouteEnum.MY_ROUTES,
+    method: MethodEnum.PATCH,
+    action: myRoutesAddOneAction,
+    middlewares: [authMiddlewareFunc, roleAndPermissionMiddleware],
+  },
+
+  {
+    path: ApiRouteEnum.MY_ROUTES,
+    method: MethodEnum.DELETE,
+    action: myRoutesDeleteOneAction,
     middlewares: [authMiddlewareFunc, roleAndPermissionMiddleware],
   },
 ];
