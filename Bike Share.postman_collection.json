@@ -1051,6 +1051,204 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "{{host}}/my-packs",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "token",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/my-packs",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"my-packs"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "{{host}}/my-packs",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "token",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"packId\": 4\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/my-packs",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"my-packs"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "{{host}}/my-packs",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "token",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"packId\": 5\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/my-packs",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"my-packs"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "{{host}}/my-routes",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "token",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/my-routes",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"my-routes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "{{host}}/my-routes",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "token",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"packId\": 4\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/my-routes",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"my-routes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "{{host}}/my-routes",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "token",
+						"type": "text",
+						"value": "{{token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"packId\": 5\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/my-routes",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"my-routes"
+					]
+				}
+			},
+			"response": []
 		}
 	],
 	"protocolProfileBehavior": {}
