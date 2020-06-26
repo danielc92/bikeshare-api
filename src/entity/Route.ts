@@ -4,7 +4,9 @@ import {
   Column,
   UpdateDateColumn,
   CreateDateColumn,
+  ManyToMany,
 } from "typeorm";
+import { Rider } from "./Rider";
 
 enum RouteDifficulty {
   HARD = "Hard",
@@ -29,6 +31,9 @@ export class Route {
     default: RouteDifficulty.MEDIUM,
   })
   difficulty: RouteDifficulty;
+
+  @ManyToMany((type) => Rider, (rider) => rider.routes)
+  riders: Rider[];
 
   @UpdateDateColumn()
   modifiedAt: Date;
