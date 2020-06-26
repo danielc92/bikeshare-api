@@ -18,6 +18,17 @@ Running the project
 npm run start
 ```
 
+### Available Routes
+
+- /auth/login (allows Riders to authenticate and retrieve jwt token)
+- /rider (allows for create, delete, update, retrieval of Rider data)
+- /route (allows for create, delete, update, retrieval of Route data)
+- /pack (allows for create, delete, update, retrieval of Pack data)
+- /bike (allows for create, delete, update, retrieval of Bike data)
+- /contact (allows for create, delete, update, retrieval of Contact data)
+- /my-routes (allows for create, delete, retrieval of Rider-Route associations)
+- /my-packs (allows for create, delete, retrieval of Rider-Pack associations)
+
 ### Configuration
 
 TypeORM configuration can be modified in `ormconfig.json` in root of project. Currently the project uses a docker/postgres setup for local development.
