@@ -22,7 +22,7 @@ export class Rider {
   @Column({ nullable: true })
   email: string;
 
-  @Column({ nullable: true })
+  @Column({ nullable: true, select: false })
   password: string;
 
   @Column()
@@ -52,11 +52,15 @@ export class Rider {
   @ManyToOne((type) => Role, (role) => role.riders)
   role: Role;
 
-  @ManyToMany((type) => Pack, (pack) => pack.riders)
+  @ManyToMany((type) => Pack, (pack) => pack.riders, {
+    cascade: true,
+  })
   @JoinTable()
   packs: Pack[];
 
-  @ManyToMany((type) => Route)
+  @ManyToMany((type) => Route, (route) => route.riders, {
+    cascade: true,
+  })
   @JoinTable()
   routes: Route[];
 }
