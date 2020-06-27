@@ -22,7 +22,7 @@ export class Rider {
   @Column({ nullable: true })
   email: string;
 
-  @Column({ nullable: true, select: false })
+  @Column({ nullable: true })
   password: string;
 
   @Column()
