@@ -1,7 +1,7 @@
 import { NextFunction, Response, Request } from "express";
 import { getManager } from "typeorm";
-import { Role } from "../entity";
-import { RoleEnum } from "../entity/Role";
+import { RoleEnum, Role } from "../entity/Role";
+
 export async function roleAndPermissionMiddleware(
   request: Request,
   response: Response,
@@ -11,8 +11,11 @@ export async function roleAndPermissionMiddleware(
     const role = !request.user ? RoleEnum.ANON : request.user.role;
 
     const repo = getManager().getRepository(Role);
+
     const result = await repo.findOne({
-      where: { role },
+      where: {
+        role,
+      },
       relations: ["permissions"],
     });
 
