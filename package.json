@@ -7,8 +7,10 @@
     "@types/faker": "^4.1.12",
     "@types/helmet": "0.0.47",
     "@types/hpp": "^0.2.1",
+    "@types/jest": "^26.0.7",
     "@types/morgan": "^1.9.1",
     "@types/node": "^8.0.29",
+    "@types/supertest": "^2.0.10",
     "faker": "^4.1.0",
     "ts-node": "3.3.0",
     "typescript": "3.3.3333"
@@ -23,11 +25,13 @@
     "express": "^4.17.1",
     "helmet": "^3.23.3",
     "hpp": "^0.2.3",
+    "jest": "^26.1.0",
     "jsonwebtoken": "^8.5.1",
     "morgan": "^1.10.0",
     "pg": "^7.3.0",
     "redis": "^3.0.2",
     "reflect-metadata": "^0.1.10",
+    "supertest": "^4.0.2",
     "typeorm": "0.2.25"
   },
   "scripts": {
