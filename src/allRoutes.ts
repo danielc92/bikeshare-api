@@ -126,7 +126,7 @@ export const AppRoutes: Array<IRoute> = [
     path: ApiRouteEnum.RIDER,
     method: MethodEnum.POST,
     action: riderCreateOneAction,
-    middlewares: [authMiddlewareFunc, roleAndPermissionMiddleware],
+    middlewares: [roleAndPermissionMiddleware],
   },
 
   {
