@@ -16,6 +16,11 @@ let accessLogStream = fs.createWriteStream(
 
 createConnection()
   .then(async (connection) => {
+    // Listen for redis client error
+    client.on("error", function (error) {
+      console.error(error);
+    });
+
     // Create express app instance
     const app = express();
 
@@ -45,11 +50,6 @@ createConnection()
             .catch((err) => next(err));
         }
       );
-    });
-
-    // Listen for redis client error
-    client.on("error", function (error) {
-      console.error(error);
     });
 
     app.listen(3050);
