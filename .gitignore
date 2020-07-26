@@ -4,4 +4,5 @@ node_modules/
 build/
 tmp/
 src/morgan_logs
+src/logs
 temp/
