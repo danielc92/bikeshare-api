@@ -37,8 +37,9 @@
   "scripts": {
     "dev": "nodemon src/index.ts",
     "db-kill": "docker kill some-pg && docker rm some-pg",
-    "db-start": "docker run --name some-pg -p 5432:5432 -e POSTGRES_PASSWORD=secret -d postgres",
+    "db-start": "docker run --name some-pg -p 3008:5432 -e POSTGRES_PASSWORD=secret -d postgres",
     "db-restart": "docker restart some-pg",
+    "db-console": "docker exec -it some-pg psql -U postgres",
     "prod": "nodemon build/index.js",
     "build": "tsc"
   }
