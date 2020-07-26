@@ -9,6 +9,15 @@ export async function riderCreateOneAction(
   try {
     const { city, firstName, lastName, phone, password, email } = request.body;
 
+    const riderRepo = getManager().getRepository(Rider);
+    const riderExist = await riderRepo.findOne({
+      where: {
+        email,
+      },
+    });
+    if (riderExist)
+      return response.status(400).json({ error: "Email is taken." });
+
     const newRecord = new Rider();
     newRecord.city = city;
     newRecord.firstName = firstName;
