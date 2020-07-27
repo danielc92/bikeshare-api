@@ -9,9 +9,17 @@ import {
 import { Brand } from "./Brand";
 
 export enum BikeColourEnum {
-  BLUE = "Blue",
-  RED = "Red",
-  NOT_SPECIFIED = "Unknown",
+  BLUE = "BLUE",
+  YELLOW = "YELLOW",
+  RED = "RED",
+  GREEN = "GREEN",
+  NOT_SPECIFIED = "UNKNOWN",
+}
+
+export enum BikeForGenderEnum {
+  MALE = "MALE",
+  FEMALE = "FEMALE",
+  NOT_SPECIFIED = "UNKNOWN",
 }
 
 @Entity()
@@ -26,9 +34,11 @@ export class Bike {
   modelCode: string;
 
   @Column({
-    enum: ["MALE", "FEMALE"],
+    type: "enum",
+    enum: BikeForGenderEnum,
+    default: BikeForGenderEnum.NOT_SPECIFIED,
   })
-  gender: string;
+  gender: BikeForGenderEnum;
 
   @Column({
     type: "enum",
