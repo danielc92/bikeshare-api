@@ -43,6 +43,6 @@
     "db-console": "docker exec -it some-pg psql -U postgres",
     "prod": "nodemon build/index.js",
     "build": "tsc",
-    "test": "node_modules/.bin/jest"
+    "test": "node_modules/.bin/jest --watch"
   }
 }
