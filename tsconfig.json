@@ -6,7 +6,6 @@
     "moduleResolution": "node",
     "outDir": "./build",
     "noUnusedLocals": false,
-    "baseUrl": "src",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "sourceMap": true
