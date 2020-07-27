@@ -7,6 +7,7 @@ import { Request, Response } from "express";
 import { bikeUpdateOneAction } from "./controllers/Bike/BikeUpdateOneAction";
 import { routeGetAllAction } from "./controllers/Route/RouteGetAllAction";
 import { routeCreateOneAction } from "./controllers/Route/RouteCreateOneAction";
+import { routeDeleteOneAction } from "./controllers/Route/RouteDeleteOneAction";
 import { routeGetOneAction } from "./controllers/Route/RouteGetOneAction";
 import { routeUpdateOneAction } from "./controllers/Route/RouteUpdateOneAction";
 import { riderGetAllAction } from "./controllers/Rider/RiderGetAllAction";
@@ -82,6 +83,12 @@ export const AppRoutes: Array<IRoute> = [
     method: MethodEnum.GET,
     action: routeGetAllAction,
     middlewares: [roleAndPermissionMiddleware],
+  },
+  {
+    path: ApiRouteEnum.ROUTE,
+    method: MethodEnum.DELETE,
+    action: routeDeleteOneAction,
+    middlewares: [authMiddlewareFunc, roleAndPermissionMiddleware],
   },
   {
     path: ApiRouteEnum.ROUTE,
