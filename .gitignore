@@ -6,3 +6,4 @@ tmp/
 src/morgan_logs
 src/logs
 temp/
+coverage/
