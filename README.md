@@ -68,3 +68,25 @@ Deleting many to many
     aRider.packs = aRider.packs.filter((p) => p.id !== 3);
     await connection.manager.save(aRider);
 ```
+
+```sql
+INSERT INTO permission
+("apiRoute", "requestMethod")
+VALUES
+('/bike', 'get'),('/bike', 'post'),('/bike', 'patch'),('/bike', 'delete'),
+('/bike/detail','get'),
+('/route', 'get'),('/route', 'post'),('/route', 'patch'),('/route', 'delete'),
+('/route/detail','get'),
+('/rider', 'get'),('/rider', 'post'),('/rider', 'patch'),('/rider', 'delete'),
+('/rider/detail','get'),
+('/brand', 'get'),('/brand', 'post'),('/brand', 'patch'),('/brand', 'delete'),
+('/brand/detail','get'),
+('/contact', 'get'),('/contact', 'post'),('/contact', 'patch'),('/contact', 'delete'),
+('/contact/detail','get'),
+('/pack', 'get'),('/pack', 'post'),('/pack', 'patch'),('/pack', 'delete'),
+('/pack/detail','get'),
+('/my-packs', 'get'),('/my-packs', 'patch'),('/my-packs', 'delete'),
+('/my-routes', 'get'),('/my-routes', 'patch'),('/my-routes', 'delete'),
+('/auth/login','post')
+;
+```
