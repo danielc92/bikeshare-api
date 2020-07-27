@@ -1,7 +1,12 @@
 import "reflect-metadata";
-import { createConnection } from "typeorm";
+import { createConnection, getRepository, getManager } from "typeorm";
 import { client } from "./redis_client";
 import { app } from "./app";
+import { Role, Permission } from "./entity";
+import { RoleEnum } from "./entity/Role";
+import { ApiRouteEnum, MethodEnum } from "./entity/Permission";
+import { AppRoutes } from "./allRoutes";
+import { populatePermission } from "./utils/permissions";
 
 createConnection()
   .then(async (connection) => {
@@ -9,6 +14,8 @@ createConnection()
     client.on("error", function (error) {
       console.error(error);
     });
+
+    await populatePermission();
 
     app.listen(3050);
   })
