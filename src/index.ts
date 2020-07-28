@@ -1,12 +1,12 @@
 import "reflect-metadata";
 import { createConnection, getRepository, getManager } from "typeorm";
-import { client } from "./redis_client";
-import { app } from "./app";
-import { Role, Permission } from "./entity";
-import { RoleEnum } from "./entity/Role";
-import { ApiRouteEnum, MethodEnum } from "./entity/Permission";
-import { AppRoutes } from "./allRoutes";
-import { populatePermission } from "./utils/permissions";
+import { client } from "~/redis_client";
+import { app } from "~/app";
+import { Role, Permission } from "~/entity";
+import { RoleEnum } from "~/entity/Role";
+import { ApiRouteEnum, MethodEnum } from "~/entity/Permission";
+import { AppRoutes } from "~/allRoutes";
+import { populatePermission } from "~/utils/permissions";
 
 createConnection()
   .then(async (connection) => {
