@@ -1,10 +1,9 @@
-require("module-alias/register");
 import * as request from "supertest";
 import { createConnection, getConnection } from "typeorm";
-import { populatePermission } from "../../../utils/permissions";
-import { Rider } from "../../../entity";
-import { app } from "../../../app";
-import { ApiRouteEnum } from "@rootdit/entity/Permission";
+import { populatePermission } from "~/utils/permissions";
+import { Rider } from "~/entity";
+import { app } from "~/app";
+import { ApiRouteEnum } from "~/entity/Permission";
 
 let mockUser = {
   city: "Atlantis",
