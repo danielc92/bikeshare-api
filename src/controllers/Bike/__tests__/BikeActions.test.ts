@@ -25,20 +25,51 @@ describe("Bike Suite", () => {
     done();
   });
 
-  test("Unauthenticated user bike list", async () => {
+  test("Unauthenticated user can access bike list", async () => {
     const response = await request(app).get(ApiRouteEnum.BIKE).expect(200);
   });
 
-  test("Unauthenticated user cannot create a new bike", async () => {
-    const response = await request(app)
-      .post(ApiRouteEnum.BIKE)
-      .send({ modelCode: "M1" })
-      .expect(400);
-  });
-
-  test("Bike list contains 'results'", async () => {
+  test("Bike list contains the property - 'results'", async () => {
     const response = await request(app).get(ApiRouteEnum.BIKE);
     expect(response.body).toHaveProperty("results");
+  });
+
+  test("Unauthenticated user cannot delete a bike, receives status 400", async () => {
+    await request(app).delete(ApiRouteEnum.BIKE).send({}).expect(400);
+  });
+
+  test("Unauthenticated user cannot delete a bike, message contains 'Missing auth token'", async () => {
+    const response = await request(app).delete(ApiRouteEnum.BIKE).send({});
+    expect(response.body.message).toBe("Missing auth token");
+  });
+
+  test("Unauthenticated user cannot create a new bike", async () => {
+    await request(app)
+      .post(ApiRouteEnum.BIKE)
+      .send({ modelCode: "M1" })
+      .expect(401);
+  });
+
+  test("Unauthenticated user cannot update bike, receives status 400", async () => {
+    const response = await request(app).patch(ApiRouteEnum.BIKE).send({});
+
+    expect(response.status).toBe(400);
+  });
+
+  test("Unauthenticated user cannot update bike, message contains 'Missing auth token'", async () => {
+    const response = await request(app).patch(ApiRouteEnum.BIKE).send({});
+    expect(response.body.message).toBe("Missing auth token");
+  });
+
+  test("Unauthenticated user cannot create bike, receives status 400", async () => {
+    const response = await request(app).post(ApiRouteEnum.BIKE).send({});
+
+    expect(response.status).toBe(400);
+  });
+
+  test("Unauthenticated user cannot create bike, message contains 'Missing auth token'", async () => {
+    const response = await request(app).post(ApiRouteEnum.BIKE).send({});
+    expect(response.body.message).toBe("Missing auth token");
   });
 
   test("User can be created", async () => {
@@ -51,7 +82,6 @@ describe("Bike Suite", () => {
       .send({ email: mockUser.email, password: mockUser.password });
 
     expect(response.status).toBe(200);
-
     const { token } = response.body;
 
     await request(app)
