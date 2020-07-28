@@ -5,9 +5,13 @@
     "module": "commonjs",
     "moduleResolution": "node",
     "outDir": "./build",
+    "baseUrl": "./",
     "noUnusedLocals": false,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "sourceMap": true
+    "sourceMap": true,
+    "paths": {
+      "@rootdit/*": ["src/*"]
+    }
   }
 }
