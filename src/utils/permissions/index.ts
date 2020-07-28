@@ -1,6 +1,8 @@
 import { getManager, getRepository } from "typeorm";
-import { RoleEnum, Role } from "../../entity/Role";
+
 import { MethodEnum, ApiRouteEnum, Permission } from "../../entity/Permission";
+import { Role } from "~/entity";
+import { RoleEnum } from "~/entity/Role";
 
 export const populatePermission = async () => {
   const roleRepo = getRepository(Role);
