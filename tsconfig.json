@@ -11,7 +11,7 @@
     "experimentalDecorators": true,
     "sourceMap": true,
     "paths": {
-      "@rootdit/*": ["src/*"]
+      "~/*": ["src/*"]
     }
   }
 }
