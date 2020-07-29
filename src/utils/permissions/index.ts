@@ -241,7 +241,7 @@ export const populatePermission = async () => {
   await getManager().save(p36);
   await getManager().save(p37);
 
-  theAnon.permissions = [p1, p2, p6, p23, p27, p31];
+  theAnon.permissions = [p1, p2, p6, p7, p11, p23, p27, p31];
 
   theRider.permissions = [
     p1,
