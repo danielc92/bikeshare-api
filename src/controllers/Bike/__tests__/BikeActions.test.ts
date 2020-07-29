@@ -1,11 +1,11 @@
 import * as request from "supertest";
 import { createConnection, getConnection } from "typeorm";
 import { populatePermission } from "~/utils/permissions";
-import { Rider } from "~/entity";
-import { app } from "~/app";
 import { ApiRouteEnum } from "~/entity/Permission";
+import { app } from "~/app";
+import { connection } from "~/utils/connection";
 
-let mockUser = {
+const mockUser = {
   city: "Atlantis",
   phone: "00654654",
   firstName: "Daniel",
@@ -13,70 +13,78 @@ let mockUser = {
   password: "12345",
   email: "daniel-test-user-1@daniel-test-user.com",
 };
+
 describe("Bike Suite", () => {
-  beforeAll(async (done) => {
-    await createConnection();
-    await populatePermission();
-    done();
+  beforeAll(async () => {
+    await connection.create();
+    await connection.prepopulate();
   });
 
-  afterAll(async (done) => {
-    await getConnection().close();
-    done();
+  afterAll(async () => {
+    await connection.clear();
+    await connection.close();
   });
 
-  test("Unauthenticated user can access bike list", async () => {
+  test("Unauthenticated user can access bike list", async (done) => {
     const response = await request(app).get(ApiRouteEnum.BIKE).expect(200);
+    done();
   });
 
-  test("Bike list contains the property - 'results'", async () => {
+  test("Bike list contains the property - 'results'", async (done) => {
     const response = await request(app).get(ApiRouteEnum.BIKE);
     expect(response.body).toHaveProperty("results");
+    done();
   });
 
-  test("Unauthenticated user cannot delete a bike, receives status 400", async () => {
+  test("Unauthenticated user cannot delete a bike, receives status 400", async (done) => {
     await request(app).delete(ApiRouteEnum.BIKE).send({}).expect(400);
+    done();
   });
 
-  test("Unauthenticated user cannot delete a bike, message contains 'Missing auth token'", async () => {
+  test("Unauthenticated user cannot delete a bike, message contains 'Missing auth token'", async (done) => {
     const response = await request(app).delete(ApiRouteEnum.BIKE).send({});
     expect(response.body.message).toBe("Missing auth token");
+    done();
   });
 
-  test("Unauthenticated user cannot create a new bike", async () => {
+  test("Unauthenticated user cannot create a new bike", async (done) => {
     await request(app)
       .post(ApiRouteEnum.BIKE)
       .send({ modelCode: "M1" })
-      .expect(401);
+      .expect(400);
+    done();
   });
 
-  test("Unauthenticated user cannot update bike, receives status 400", async () => {
+  test("Unauthenticated user cannot update bike, receives status 400", async (done) => {
     const response = await request(app).patch(ApiRouteEnum.BIKE).send({});
-
     expect(response.status).toBe(400);
+    done();
   });
 
-  test("Unauthenticated user cannot update bike, message contains 'Missing auth token'", async () => {
+  test("Unauthenticated user cannot update bike, message contains 'Missing auth token'", async (done) => {
     const response = await request(app).patch(ApiRouteEnum.BIKE).send({});
     expect(response.body.message).toBe("Missing auth token");
+    done();
   });
 
-  test("Unauthenticated user cannot create bike, receives status 400", async () => {
+  test("Unauthenticated user cannot create bike, receives status 400", async (done) => {
     const response = await request(app).post(ApiRouteEnum.BIKE).send({});
-
     expect(response.status).toBe(400);
+    done();
   });
 
-  test("Unauthenticated user cannot create bike, message contains 'Missing auth token'", async () => {
+  test("Unauthenticated user cannot create bike, message contains 'Missing auth token'", async (done) => {
     const response = await request(app).post(ApiRouteEnum.BIKE).send({});
     expect(response.body.message).toBe("Missing auth token");
+    done();
   });
 
-  test("User can be created", async () => {
+  test("User can be created", async (done) => {
     await request(app).post(ApiRouteEnum.RIDER).send(mockUser).expect(200);
+    done();
   });
 
-  test("User can log in, and can create a new bike instance", async () => {
+  test("User can log in, and can create a new bike instance", async (done) => {
     const response = await request(app)
       .post(ApiRouteEnum.AUTH_LOGIN)
       .send({ email: mockUser.email, password: mockUser.password });
@@ -94,5 +102,7 @@ describe("Bike Suite", () => {
         gender: "MALE",
       })
       .expect(200);
+
+    done();
   });
 });

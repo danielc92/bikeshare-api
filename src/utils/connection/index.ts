@@ -1,4 +1,5 @@
 import { createConnection, getConnection } from "typeorm";
+import { populatePermission } from "../permissions";
 
 const connection = {
   async create() {
@@ -17,6 +18,11 @@ const connection = {
       const repository = connection.getRepository(entity.name);
       await repository.query(`DELETE FROM ${entity.tableName}`);
     });
+  },
+
+  async prepopulate() {
+    await getConnection();
+    await populatePermission();
   },
 };
 

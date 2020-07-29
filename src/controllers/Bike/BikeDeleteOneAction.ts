@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { getManager } from "typeorm";
-import { Bike } from "../../entity";
+import { Bike } from "~/entity";
 
 export async function bikeDeleteOneAction(
   request: Request,
