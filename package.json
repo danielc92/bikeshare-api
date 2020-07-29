@@ -44,7 +44,7 @@
     "db-console": "docker exec -it some-pg psql -U postgres",
     "prod": "nodemon build/index.js",
     "build": "tsc",
-    "test": "node_modules/.bin/jest --watch --watchAll=false",
-    "test-coverage": "node_modules/.bin/jest --watch --watchAll=false --coverage"
+    "test": "node_modules/.bin/jest --watch --watchAll=false --runInBand",
+    "test-coverage": "node_modules/.bin/jest --watch --watchAll=false --runInBand --coverage"
   }
 }
