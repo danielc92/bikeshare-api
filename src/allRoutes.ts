@@ -191,7 +191,7 @@ export const AppRoutes: Array<IRoute> = [
     path: ApiRouteEnum.CONTACT,
     method: MethodEnum.POST,
     action: contactCreateOneAction,
-    middlewares: [authMiddlewareFunc, roleAndPermissionMiddleware],
+    middlewares: [roleAndPermissionMiddleware],
   },
 
   {
@@ -205,7 +205,7 @@ export const AppRoutes: Array<IRoute> = [
     path: ApiRouteEnum.CONTACT,
     method: MethodEnum.PATCH,
     action: contactUpdateOneAction,
-    middlewares: [authMiddlewareFunc, roleAndPermissionMiddleware],
+    middlewares: [roleAndPermissionMiddleware],
   },
 
   {
