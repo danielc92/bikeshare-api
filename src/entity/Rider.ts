@@ -28,13 +28,13 @@ export class Rider {
   @Column()
   firstName: string;
 
-  @Column()
+  @Column({ nullable: true })
   lastName: string;
 
-  @Column()
+  @Column({ nullable: true })
   city: string;
 
-  @Column()
+  @Column({ nullable: true })
   phone: string;
 
   @UpdateDateColumn()
