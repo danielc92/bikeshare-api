@@ -1,5 +1,8 @@
-import { createConnection, getConnection } from "typeorm";
+import { createConnection, getConnection, getManager } from "typeorm";
 import { populatePermission } from "../permissions";
+import { Rider } from "~/entity";
+import * as bcrypt from "bcrypt";
+import { RoleEnum, Role } from "~/entity/Role";
 
 const connection = {
   async create() {
@@ -23,6 +26,16 @@ const connection = {
   async prepopulate() {
     await getConnection();
     await populatePermission();
+
+    // Create a test user too
+    const testUser = new Rider();
+    testUser.email = "test@test.com";
+    testUser.password = await bcrypt.hash("secret", 10);
+    testUser.firstName = "stan";
+    testUser.lastName = "smith";
+    const roleRepo = getManager().getRepository(Role);
+    testUser.role = await roleRepo.findOne({ where: { role: "RIDER" } });
+    await getManager().save(testUser);
   },
 };
 
