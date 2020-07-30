@@ -31,13 +31,6 @@ describe("Brand Suite", () => {
     done();
   });
 
-  // test("Unauthenticated user can get brand detail", async (done) => {
-  //   await request(app)
-  //     .get(ApiRouteEnum.BRAND_DETAIL + "?id=")
-  //     .expect(200);
-  //   done();
-  // });
-
   test("Unauthenticated user cannot delete brand", async (done) => {
     await request(app).delete(ApiRouteEnum.BRAND).send({}).expect(400);
     done();
