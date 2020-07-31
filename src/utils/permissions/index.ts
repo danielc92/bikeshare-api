@@ -251,6 +251,8 @@ export const populatePermission = async () => {
     p13,
     p14,
     p16,
+    p22,
+    p26,
     p23,
     p27,
     p31,
