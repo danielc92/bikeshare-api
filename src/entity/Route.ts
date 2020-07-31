@@ -8,7 +8,7 @@ import {
 } from "typeorm";
 import { Rider } from "./Rider";
 
-enum RouteDifficulty {
+export enum RouteDifficultyEnum {
   HARD = "Hard",
   MEDIUM = "Medium",
   BEGINNER = "Beginner",
@@ -27,10 +27,10 @@ export class Route {
 
   @Column({
     type: "enum",
-    enum: RouteDifficulty,
-    default: RouteDifficulty.MEDIUM,
+    enum: RouteDifficultyEnum,
+    default: RouteDifficultyEnum.MEDIUM,
   })
-  difficulty: RouteDifficulty;
+  difficulty: RouteDifficultyEnum;
 
   @ManyToMany((type) => Rider, (rider) => rider.routes)
   riders: Rider[];
