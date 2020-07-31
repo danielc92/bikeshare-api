@@ -5,20 +5,13 @@ import * as request from "supertest";
 import { app } from "~/app";
 import { ApiRouteEnum } from "~/entity/Permission";
 import { connection } from "~/utils/connection";
-
-const mockUser = {
-  city: "Atlantis",
-  phone: "00654654",
-  firstName: "Daniel",
-  lastName: "Corcoran",
-  password: "12345",
-  email: "daniel-test-user-1@daniel-test-user.com",
-};
+import { API_MESSAGES } from "~/utils/messages";
 
 describe("Brand Suite", () => {
   beforeAll(async () => {
     await connection.create();
-    await connection.prepopulate();
+    await connection.createPermissions();
+    await connection.createTestUsers();
   });
 
   afterAll(async () => {
@@ -36,16 +29,10 @@ describe("Brand Suite", () => {
     done();
   });
 
-  test("User can be created", async (done) => {
-    await request(app).post(ApiRouteEnum.RIDER).send(mockUser).expect(200);
-    done();
-  });
-
-  let brandId;
   test("User can log in, and can create a new brand", async (done) => {
     const response = await request(app)
       .post(ApiRouteEnum.AUTH_LOGIN)
-      .send({ email: mockUser.email, password: mockUser.password });
+      .send({ email: "test@test.com", password: "secret" });
 
     expect(response.status).toBe(200);
     const { token } = response.body;
@@ -57,22 +44,40 @@ describe("Brand Suite", () => {
         title: "Awesome brand!",
       });
 
-    // Set the brand id for the next test
-    brandId = response2.body.id;
     expect(response.status).toBe(200);
 
     done();
   });
 
   test("Unauthenticated user can get brand detail", async (done) => {
-    await request(app)
-      .get(`${ApiRouteEnum.BRAND_DETAIL}?id=${brandId}`)
-      .expect(200);
+    await request(app).get(`${ApiRouteEnum.BRAND_DETAIL}?id=1`).expect(200);
+    done();
+  });
+
+  test("Unauthenticated user can get brand detail", async (done) => {
+    const response = await request(app).get(ApiRouteEnum.BRAND_DETAIL);
+
+    expect(response.status).toBe(400);
+    expect(response.body.message).toBe(API_MESSAGES.MISSING_ID);
     done();
   });
 
   test("Unauthenticated user can get brand list", async (done) => {
     await request(app).get(ApiRouteEnum.BRAND).expect(200);
+    done();
+  });
+
+  test("Authenticated user can update brand with title", async (done) => {
+    const user = await request(app)
+      .post(ApiRouteEnum.AUTH_LOGIN)
+      .send({ email: "test@test.com", password: "secret" });
+
+    expect(user.status).toBe(200);
+    await request(app)
+      .patch(ApiRouteEnum.BRAND)
+      .set({ token: user.body.token })
+      .send({ id: 1, title: "new brand title" })
+      .expect(200);
     done();
   });
 });

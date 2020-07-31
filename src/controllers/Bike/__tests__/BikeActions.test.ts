@@ -16,7 +16,8 @@ const mockUser = {
 describe("Bike Suite", () => {
   beforeAll(async () => {
     await connection.create();
-    await connection.prepopulate();
+    await connection.createPermissions();
+    await connection.createTestUsers();
   });
 
   afterAll(async () => {

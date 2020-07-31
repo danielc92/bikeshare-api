@@ -8,7 +8,8 @@ import { API_MESSAGES } from "~/utils/messages";
 describe("Contact Test Suite", () => {
   beforeAll(async () => {
     await connection.create();
-    await connection.prepopulate();
+    await connection.createPermissions();
+    await connection.createTestUsers();
   });
 
   afterAll(async () => {
@@ -31,7 +32,16 @@ describe("Contact Test Suite", () => {
   });
 
   test("Unauthenticated user can get contacts details data", async (done) => {
-    await supertest(app).get(ApiRouteEnum.CONTACT_DETAIL + "?id=1");
+    await supertest(app)
+      .get(ApiRouteEnum.CONTACT_DETAIL + "?id=1")
+      .expect(200);
+    done();
+  });
+
+  test("Unauthenticated user cannot get contacts details with invalid id", async (done) => {
+    await supertest(app)
+      .get(ApiRouteEnum.CONTACT_DETAIL + "?id=invalid")
+      .expect(400);
     done();
   });
 
@@ -68,7 +78,7 @@ describe("Contact Test Suite", () => {
     done();
   });
 
-  test("Authenticated user should not delete contact", async (done) => {
+  test("Authenticated rider should not delete contact", async (done) => {
     // Login
     const response = await supertest(app).post(ApiRouteEnum.AUTH_LOGIN).send({
       email: "test@test.com",
@@ -83,6 +93,23 @@ describe("Contact Test Suite", () => {
 
     expect(response2.body.message).toBe(API_MESSAGES.NO_PERMISSION);
     expect(response2.status).toBe(400);
+    done();
+  });
+
+  test("Authenticated admin should delete contact", async (done) => {
+    // Login
+    const response = await supertest(app).post(ApiRouteEnum.AUTH_LOGIN).send({
+      email: "admin@admin.com",
+      password: "secret",
+    });
+
+    // Delete
+    const response2 = await supertest(app)
+      .delete(ApiRouteEnum.CONTACT + "?id=1")
+      .set({ token: response.body.token })
+      .send();
+
+    expect(response2.status).toBe(200);
     done();
   });
 });
