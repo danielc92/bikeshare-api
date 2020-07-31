@@ -1,8 +1,9 @@
 import { createConnection, getConnection, getManager } from "typeorm";
 import { populatePermission } from "../permissions";
-import { Rider } from "~/entity";
+import { Rider, Route, Pack } from "~/entity";
 import * as bcrypt from "bcrypt";
-import { RoleEnum, Role } from "~/entity/Role";
+import { Role } from "~/entity/Role";
+import { RouteDifficultyEnum } from "~/entity/Route";
 
 const connection = {
   async create() {
@@ -48,6 +49,38 @@ const connection = {
     admin.lastName = "rogers";
     admin.role = await roleRepo.findOne({ where: { role: "ADMINISTRATOR" } });
     await getManager().save(admin);
+  },
+  async createTestPacks() {
+    await getConnection();
+    let repo = getManager().getRepository(Pack);
+
+    const pack1 = repo.create({
+      packName: "A test pack",
+      packMotto: "A test motto",
+    });
+
+    await repo.save(pack1);
+    const pack2 = repo.create({
+      packName: "A test pack 2",
+      packMotto: "A test motto 2",
+    });
+    await repo.save(pack2);
+  },
+  async createTestRoutes() {
+    await getConnection();
+    let repo = getManager().getRepository(Route);
+    const route1 = repo.create({
+      area: "Melbourne",
+      difficulty: RouteDifficultyEnum.MEDIUM,
+      totalDistance: 40000,
+    });
+    await repo.save(route1);
+    const route2 = repo.create({
+      area: "Collingwood",
+      difficulty: RouteDifficultyEnum.MEDIUM,
+      totalDistance: 3400,
+    });
+    await repo.save(route2);
   },
 };
 
