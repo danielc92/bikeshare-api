@@ -83,4 +83,17 @@ describe("Rider Test Suite", () => {
 
     done();
   });
+
+  test("Rider can be created", async (done) => {
+    await supertest(app)
+      .post(ApiRouteEnum.RIDER)
+      .send({
+        email: "random@random.com",
+        password: "12345",
+        firstName: "daniel",
+        lastName: "hughes",
+      })
+      .expect(200);
+    done();
+  });
 });

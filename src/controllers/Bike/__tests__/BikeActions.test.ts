@@ -25,8 +25,37 @@ describe("Bike Suite", () => {
     await connection.close();
   });
 
+  test("User can log in, and can create a new bike instance", async (done) => {
+    const response = await request(app)
+      .post(ApiRouteEnum.AUTH_LOGIN)
+      .send({ email: "test@test.com", password: "secret" });
+
+    expect(response.status).toBe(200);
+    const { token } = response.body;
+
+    await request(app)
+      .post(ApiRouteEnum.BIKE)
+      .set({ token })
+      .send({
+        modelCode: "M001",
+        isAvailable: true,
+        colour: "BLUE",
+        gender: "MALE",
+      })
+      .expect(200);
+
+    done();
+  });
+
   test("Unauthenticated user can access bike list", async (done) => {
     const response = await request(app).get(ApiRouteEnum.BIKE).expect(200);
+    done();
+  });
+
+  test("Unauthenticated user can access bike detail", async (done) => {
+    const response = await request(app)
+      .get(ApiRouteEnum.BIKE_DETAIL + "?id=1")
+      .expect(200);
     done();
   });
 
@@ -76,33 +105,6 @@ describe("Bike Suite", () => {
   test("Unauthenticated user cannot create bike, message contains 'Missing auth token'", async (done) => {
     const response = await request(app).post(ApiRouteEnum.BIKE).send({});
     expect(response.body.message).toBe(API_MESSAGES.MISSING_TOKEN);
-    done();
-  });
-
-  test("User can be created", async (done) => {
-    await request(app).post(ApiRouteEnum.RIDER).send(mockUser).expect(200);
-    done();
-  });
-
-  test("User can log in, and can create a new bike instance", async (done) => {
-    const response = await request(app)
-      .post(ApiRouteEnum.AUTH_LOGIN)
-      .send({ email: mockUser.email, password: mockUser.password });
-
-    expect(response.status).toBe(200);
-    const { token } = response.body;
-
-    await request(app)
-      .post(ApiRouteEnum.BIKE)
-      .set({ token })
-      .send({
-        modelCode: "M001",
-        isAvailable: true,
-        colour: "BLUE",
-        gender: "MALE",
-      })
-      .expect(200);
-
     done();
   });
 });
