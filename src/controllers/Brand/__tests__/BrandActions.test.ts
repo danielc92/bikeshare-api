@@ -80,4 +80,18 @@ describe("Brand Suite", () => {
       .expect(200);
     done();
   });
+
+  test("Authenticated admin can delete brand", async (done) => {
+    const user = await request(app)
+      .post(ApiRouteEnum.AUTH_LOGIN)
+      .send({ email: "admin@admin.com", password: "secret" });
+
+    expect(user.status).toBe(200);
+    await request(app)
+      .delete(ApiRouteEnum.BRAND + "?id=1")
+      .set({ token: user.body.token })
+      .send()
+      .expect(200);
+    done();
+  });
 });
