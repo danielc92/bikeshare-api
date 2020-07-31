@@ -14,7 +14,7 @@ export class Pack {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column({ nullable: true })
+  @Column()
   packName: string;
 
   @Column({ nullable: true })
