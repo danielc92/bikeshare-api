@@ -56,6 +56,21 @@ describe("Rider-Routes Suite", () => {
     done();
   });
 
+  test("Authenticated rider cant remove route that doesnt exist", async (done) => {
+    const user = await supertest(app)
+      .post(ApiRouteEnum.AUTH_LOGIN)
+      .send({ email: "test@test.com", password: "secret" });
+    expect(user.status).toBe(200);
+
+    const response = await supertest(app)
+      .delete(ApiRouteEnum.MY_ROUTES)
+      .set({ token: user.body.token })
+      .send({ routeId: 9999 });
+    expect(response.body.message).toBe(API_MESSAGES.NOT_FOUND);
+    expect(response.status).toBe(400);
+    done();
+  });
+
   test("Authenticated rider remove a route from their list", async (done) => {
     const user = await supertest(app)
       .post(ApiRouteEnum.AUTH_LOGIN)

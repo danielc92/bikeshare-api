@@ -4,6 +4,7 @@ import { app } from "~/app";
 import { ApiRouteEnum } from "~/entity/Permission";
 import { API_MESSAGES } from "~/utils/messages";
 import { doesNotThrow } from "assert";
+import { STATUS_CODES } from "http";
 
 describe("Rider-Packs Suite", () => {
   beforeAll(async () => {
@@ -53,6 +54,21 @@ describe("Rider-Packs Suite", () => {
     expect(response.body).toHaveProperty("packs");
     expect(response.body.packs.length).toBeGreaterThanOrEqual(1);
     expect(response.status).toBe(200);
+    done();
+  });
+
+  test("Authenticated rider cant remove pack that doesnt exist", async (done) => {
+    const user = await supertest(app)
+      .post(ApiRouteEnum.AUTH_LOGIN)
+      .send({ email: "test@test.com", password: "secret" });
+    expect(user.status).toBe(200);
+
+    const response = await supertest(app)
+      .delete(ApiRouteEnum.MY_PACKS)
+      .set({ token: user.body.token })
+      .send({ packId: 9999 });
+    expect(response.body.message).toBe(API_MESSAGES.NOT_FOUND);
+    expect(response.status).toBe(400);
     done();
   });
 

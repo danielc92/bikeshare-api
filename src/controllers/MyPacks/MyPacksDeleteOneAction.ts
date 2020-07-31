@@ -22,7 +22,6 @@ export async function myPacksDeleteOneAction(
     await createQueryBuilder().relation(Rider, "packs").of(rider).remove(pack);
     return response.status(200).json({ removed: pack });
   } catch (error) {
-    console.log(error);
     return response.status(400).json({ message: error.toString() });
   }
 }

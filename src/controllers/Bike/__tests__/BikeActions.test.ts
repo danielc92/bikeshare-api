@@ -121,4 +121,59 @@ describe("Bike Suite", () => {
       .expect(200);
     done();
   });
+
+  test("Authenticated rider can update bike", async (done) => {
+    const user = await request(app)
+      .post(ApiRouteEnum.AUTH_LOGIN)
+      .send({ email: "test@test.com", password: "secret" });
+
+    expect(user.status).toBe(200);
+
+    await request(app)
+      .patch(ApiRouteEnum.BIKE)
+      .set({ token: user.body.token })
+      .send({ id: 1, isAvailable: true })
+      .expect(200);
+    done();
+  });
+
+  test("Unauthenticated user cant access bike detail without id", async (done) => {
+    const response = await request(app).get(ApiRouteEnum.BIKE_DETAIL);
+
+    expect(response.status).toBe(400);
+    expect(response.body.message).toBe(API_MESSAGES.MISSING_ID);
+    done();
+  });
+
+  test("Authenticated rider cannot update bike without providing an id", async (done) => {
+    const user = await request(app)
+      .post(ApiRouteEnum.AUTH_LOGIN)
+      .send({ email: "test@test.com", password: "secret" });
+
+    expect(user.status).toBe(200);
+
+    const response = await request(app)
+      .patch(ApiRouteEnum.BIKE)
+      .set({ token: user.body.token })
+      .send({ isAvailable: true });
+
+    expect(response.status).toBe(400);
+    expect(response.body.message).toBe(API_MESSAGES.MISSING_ID);
+    done();
+  });
+
+  test("Authenticated rider cannot update bike with invalid value", async (done) => {
+    const user = await request(app)
+      .post(ApiRouteEnum.AUTH_LOGIN)
+      .send({ email: "test@test.com", password: "secret" });
+
+    expect(user.status).toBe(200);
+
+    await request(app)
+      .patch(ApiRouteEnum.BIKE)
+      .set({ token: user.body.token })
+      .send({ id: 1, colour: 999 })
+      .expect(400);
+    done();
+  });
 });

@@ -53,6 +53,29 @@ describe("Rider Test Suite", () => {
     done();
   });
 
+  test("Authenticated rider receives error when id is absent", async (done) => {
+    const user = await supertest(app)
+      .post(ApiRouteEnum.AUTH_LOGIN)
+      .send({ email: "test@test.com", password: "secret" });
+    expect(user.status).toBe(200);
+
+    const response = await supertest(app)
+      .patch(ApiRouteEnum.RIDER)
+      .set({ token: user.body.token })
+      .send({ phone: "0465485550" });
+    expect(response.status).toBe(400);
+    expect(response.body.message).toBe(API_MESSAGES.MISSING_ID);
+
+    done();
+  });
+
+  test("Unauthenticated rider receives error for missing id", async (done) => {
+    const response = await supertest(app).get(ApiRouteEnum.RIDER_DETAIL);
+    expect(response.status).toBe(400);
+    expect(response.body.message).toBe(API_MESSAGES.MISSING_ID);
+    done();
+  });
+
   test("Authenticated rider cannot update another riders data", async (done) => {
     const user = await supertest(app)
       .post(ApiRouteEnum.AUTH_LOGIN)

@@ -66,6 +66,15 @@ describe("Rider Test Suite", () => {
     done();
   });
 
+  test("Unauthenticated user cannot get pack without id", async (done) => {
+    const response = await supertest(app).get(ApiRouteEnum.PACK_DETAIL);
+
+    expect(response.status).toBe(400);
+    expect(response.body.message).toBe(API_MESSAGES.MISSING_ID);
+
+    done();
+  });
+
   test("Unauthenticated cannot delete pack", async (done) => {
     const response = await supertest(app)
       .delete(ApiRouteEnum.PACK + "?id=1")

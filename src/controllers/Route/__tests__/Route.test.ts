@@ -75,6 +75,25 @@ describe("Route Test Suite", () => {
     done();
   });
 
+  test("Authenticated rider can update existing route", async (done) => {
+    const user = await supertest(app)
+      .post(ApiRouteEnum.AUTH_LOGIN)
+      .send({ email: "test@test.com", password: "secret" });
+    expect(user.status).toBe(200);
+
+    const response = await supertest(app)
+      .patch(ApiRouteEnum.ROUTE)
+      .set({ token: user.body.token })
+      .send({
+        distance: 12000,
+      });
+
+    expect(response.status).toBe(400);
+    expect(response.body.message).toBe(API_MESSAGES.MISSING_ID);
+
+    done();
+  });
+
   test("Authenticated rider cant delete route", async (done) => {
     const user = await supertest(app)
       .post(ApiRouteEnum.AUTH_LOGIN)
