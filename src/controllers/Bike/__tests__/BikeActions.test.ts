@@ -65,17 +65,6 @@ describe("Bike Suite", () => {
     done();
   });
 
-  test("Unauthenticated user cannot delete a bike, receives status 400", async (done) => {
-    await request(app).delete(ApiRouteEnum.BIKE).send({}).expect(400);
-    done();
-  });
-
-  test("Unauthenticated user cannot delete a bike, message contains 'Missing auth token'", async (done) => {
-    const response = await request(app).delete(ApiRouteEnum.BIKE).send({});
-    expect(response.body.message).toBe(API_MESSAGES.MISSING_TOKEN);
-    done();
-  });
-
   test("Unauthenticated user cannot create a new bike", async (done) => {
     await request(app)
       .post(ApiRouteEnum.BIKE)
@@ -105,6 +94,31 @@ describe("Bike Suite", () => {
   test("Unauthenticated user cannot create bike, message contains 'Missing auth token'", async (done) => {
     const response = await request(app).post(ApiRouteEnum.BIKE).send({});
     expect(response.body.message).toBe(API_MESSAGES.MISSING_TOKEN);
+    done();
+  });
+
+  test("Unauthenticated user cannot delete a bike, receives status 400", async (done) => {
+    await request(app).delete(ApiRouteEnum.BIKE).send({}).expect(400);
+    done();
+  });
+
+  test("Unauthenticated user cannot delete a bike, message contains 'Missing auth token'", async (done) => {
+    const response = await request(app).delete(ApiRouteEnum.BIKE).send({});
+    expect(response.body.message).toBe(API_MESSAGES.MISSING_TOKEN);
+    done();
+  });
+
+  test("Authenticated admin can delete bike", async (done) => {
+    const user = await request(app)
+      .post(ApiRouteEnum.AUTH_LOGIN)
+      .send({ email: "admin@admin.com", password: "secret" });
+
+    expect(user.status).toBe(200);
+    await request(app)
+      .delete(ApiRouteEnum.BIKE + "?id=1")
+      .set({ token: user.body.token })
+      .send()
+      .expect(200);
     done();
   });
 });
