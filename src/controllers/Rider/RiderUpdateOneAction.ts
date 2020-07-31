@@ -9,7 +9,8 @@ export async function riderUpdateOneAction(
 ) {
   try {
     const { id, city, phone, firstName, lastName } = request.body;
-    if (!id) return response.status(400).json({ message: "Missing id." });
+    if (!id)
+      return response.status(400).json({ message: API_MESSAGES.MISSING_ID });
 
     const repo = getManager().getRepository(Rider);
 

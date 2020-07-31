@@ -2,6 +2,7 @@ import { Request, Response } from "express";
 import { getManager } from "typeorm";
 import { Bike } from "../../entity";
 import { QueryDeepPartialEntity } from "typeorm/query-builder/QueryPartialEntity";
+import { API_MESSAGES } from "~/utils/messages";
 
 export async function bikeUpdateOneAction(
   request: Request,
@@ -9,7 +10,8 @@ export async function bikeUpdateOneAction(
 ) {
   try {
     const { id, colour, isAvailable, brand, modelCode, gender } = request.body;
-    if (!id) return response.status(400).json({ message: "Missing id." });
+    if (!id)
+      return response.status(400).json({ message: API_MESSAGES.MISSING_ID });
 
     const repo = getManager().getRepository(Bike);
 

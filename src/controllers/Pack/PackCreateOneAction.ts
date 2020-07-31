@@ -21,6 +21,6 @@ export async function packCreateOneAction(
     const results = await getManager().save(newRecord);
     return response.send(results);
   } catch (error) {
-    return response.status(400).json({ error: error.toString() });
+    return response.status(400).json({ message: error.toString() });
   }
 }

@@ -2,6 +2,7 @@ import { Request, Response } from "express";
 import { getManager } from "typeorm";
 import { Rider, Role } from "../../entity";
 import * as bcrypt from "bcrypt";
+import { API_MESSAGES } from "~/utils/messages";
 export async function riderCreateOneAction(
   request: Request,
   response: Response
@@ -16,7 +17,7 @@ export async function riderCreateOneAction(
       },
     });
     if (riderExist)
-      return response.status(400).json({ error: "Email is taken." });
+      return response.status(400).json({ message: API_MESSAGES.EMAIL_TAKEN });
 
     const newRecord = new Rider();
     newRecord.city = city;
@@ -34,6 +35,6 @@ export async function riderCreateOneAction(
     const results = await getManager().save(newRecord);
     return response.send(results);
   } catch (error) {
-    return response.status(400).json({ error: error.toString() });
+    return response.status(400).json({ message: error.toString() });
   }
 }

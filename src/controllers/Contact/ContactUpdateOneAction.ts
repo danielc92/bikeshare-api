@@ -9,7 +9,8 @@ export async function contactUpdateOneAction(
 ) {
   try {
     const { id, enquiryContent, enquiryType } = request.body;
-    if (!id) return response.status(400).json({ message: "Missing id." });
+    if (!id)
+      return response.status(400).json({ message: API_MESSAGES.MISSING_ID });
 
     const repo = getManager().getRepository(Contact);
 

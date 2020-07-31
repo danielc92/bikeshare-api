@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import { getManager } from "typeorm";
 import { Contact } from "../../entity";
+import { API_MESSAGES } from "~/utils/messages";
 
 export async function contactGetOneAction(
   request: Request,
@@ -8,11 +9,12 @@ export async function contactGetOneAction(
 ) {
   try {
     const { id } = request.query;
-    if (!id) return response.status(400).json({ message: "Missing id." });
+    if (!id)
+      return response.status(400).json({ message: API_MESSAGES.MISSING_ID });
     const repo = getManager().getRepository(Contact);
     const results = await repo.findOne(id as string);
     if (!results) {
-      return response.status(404).json({ message: "Resource not found." });
+      return response.status(404).json({ message: API_MESSAGES.NOT_FOUND });
     }
     return response.send(results);
   } catch (error) {

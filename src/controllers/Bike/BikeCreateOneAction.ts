@@ -16,6 +16,6 @@ export async function bikeCreateOneAction(
     const results = await getManager().save(bike);
     return response.send(results);
   } catch (error) {
-    return response.status(400).json({ error: error.name });
+    return response.status(400).json({ message: error.name });
   }
 }

@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import { getManager } from "typeorm";
 import { Rider } from "../../entity";
+import { API_MESSAGES } from "~/utils/messages";
 
 export async function myPacksGetOneAction(
   request: Request,
@@ -12,7 +13,7 @@ export async function myPacksGetOneAction(
       relations: ["packs"],
     });
     if (!results) {
-      return response.status(404).json({ message: "Resource not found." });
+      return response.status(404).json({ message: API_MESSAGES.NOT_FOUND });
     }
     return response.send(results);
   } catch (error) {

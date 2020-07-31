@@ -9,7 +9,8 @@ export async function routeUpdateOneAction(
 ) {
   try {
     const { id, area, difficulty, totalDistance } = request.body;
-    if (!id) return response.status(400).json({ message: "Missing id." });
+    if (!id)
+      return response.status(400).json({ message: API_MESSAGES.MISSING_ID });
 
     const repo = getManager().getRepository(Route);
 

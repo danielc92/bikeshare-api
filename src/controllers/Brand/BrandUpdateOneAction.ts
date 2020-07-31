@@ -2,6 +2,7 @@ import { Request, Response } from "express";
 import { getManager } from "typeorm";
 import { Brand } from "../../entity";
 import { QueryDeepPartialEntity } from "typeorm/query-builder/QueryPartialEntity";
+import { API_MESSAGES } from "~/utils/messages";
 
 export async function brandUpdateOneAction(
   request: Request,
@@ -9,7 +10,8 @@ export async function brandUpdateOneAction(
 ) {
   try {
     const { id, title } = request.body;
-    if (!id) return response.status(400).json({ message: "Missing id." });
+    if (!id)
+      return response.status(400).json({ message: API_MESSAGES.MISSING_ID });
 
     const repo = getManager().getRepository(Brand);
 

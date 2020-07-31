@@ -3,6 +3,7 @@ import { getManager } from "typeorm";
 import { Rider } from "../../entity";
 import * as jwt from "jsonwebtoken";
 import * as bcrypt from "bcrypt";
+import { API_MESSAGES } from "~/utils/messages";
 export async function loginAction(request: Request, response: Response) {
   try {
     const { email, password } = request.body;
@@ -16,7 +17,9 @@ export async function loginAction(request: Request, response: Response) {
     });
     const hashedPassword = await bcrypt.compare(password, rider.password);
     if (!hashedPassword)
-      return response.status(400).json({ message: "Incorrect credentials" });
+      return response
+        .status(400)
+        .json({ message: API_MESSAGES.INVALID_CREDENTIALS });
 
     const token = await jwt.sign(
       {

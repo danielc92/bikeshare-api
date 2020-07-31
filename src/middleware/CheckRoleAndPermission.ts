@@ -1,6 +1,7 @@
 import { NextFunction, Response, Request } from "express";
 import { getManager } from "typeorm";
 import { RoleEnum, Role } from "../entity/Role";
+import { API_MESSAGES } from "~/utils/messages";
 
 export async function roleAndPermissionMiddleware(
   request: Request,
@@ -26,14 +27,11 @@ export async function roleAndPermissionMiddleware(
     );
 
     if (!allowedToAccess)
-      return response
-        .status(400)
-        .json({ message: "No permission to resource" });
+      return response.status(400).json({ message: API_MESSAGES.NO_PERMISSION });
 
     next();
   } catch (error) {
-    return response
-      .status(400)
-      .json({ message: error.toString(), failedAt: "Roles and permissions." });
+    console.error(error);
+    return response.status(400).json({ message: API_MESSAGES.NO_PERMISSION });
   }
 }
