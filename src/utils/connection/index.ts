@@ -23,19 +23,31 @@ const connection = {
     });
   },
 
-  async prepopulate() {
+  async createPermissions() {
     await getConnection();
     await populatePermission();
+  },
 
-    // Create a test user too
-    const testUser = new Rider();
-    testUser.email = "test@test.com";
-    testUser.password = await bcrypt.hash("secret", 10);
-    testUser.firstName = "stan";
-    testUser.lastName = "smith";
+  async createTestUsers() {
+    await getConnection();
     const roleRepo = getManager().getRepository(Role);
-    testUser.role = await roleRepo.findOne({ where: { role: "RIDER" } });
-    await getManager().save(testUser);
+    // Create a test user too
+    const rider = new Rider();
+    rider.email = "test@test.com";
+    rider.password = await bcrypt.hash("secret", 10);
+    rider.firstName = "stan";
+    rider.lastName = "smith";
+
+    rider.role = await roleRepo.findOne({ where: { role: "RIDER" } });
+    await getManager().save(rider);
+
+    const admin = new Rider();
+    admin.email = "admin@admin.com";
+    admin.password = await bcrypt.hash("secret", 10);
+    admin.firstName = "jerry";
+    admin.lastName = "rogers";
+    admin.role = await roleRepo.findOne({ where: { role: "ADMINISTRATOR" } });
+    await getManager().save(admin);
   },
 };
 
