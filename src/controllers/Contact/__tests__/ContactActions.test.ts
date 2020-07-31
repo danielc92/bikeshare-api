@@ -3,6 +3,7 @@ import * as supertest from "supertest";
 import { app } from "~/app";
 import { ApiRouteEnum } from "~/entity/Permission";
 import { response } from "express";
+import { API_MESSAGES } from "~/utils/messages";
 
 describe("Contact Test Suite", () => {
   beforeAll(async () => {
@@ -80,7 +81,7 @@ describe("Contact Test Suite", () => {
       .set({ token: response.body.token })
       .send();
 
-    expect(response2.body.message).toBe("No permission to resource");
+    expect(response2.body.message).toBe(API_MESSAGES.NO_PERMISSION);
     expect(response2.status).toBe(400);
     done();
   });

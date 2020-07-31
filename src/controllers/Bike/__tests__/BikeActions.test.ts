@@ -1,9 +1,8 @@
 import * as request from "supertest";
-import { createConnection, getConnection } from "typeorm";
-import { populatePermission } from "~/utils/permissions";
 import { ApiRouteEnum } from "~/entity/Permission";
 import { app } from "~/app";
 import { connection } from "~/utils/connection";
+import { API_MESSAGES } from "~/utils/messages";
 
 const mockUser = {
   city: "Atlantis",
@@ -43,7 +42,7 @@ describe("Bike Suite", () => {
 
   test("Unauthenticated user cannot delete a bike, message contains 'Missing auth token'", async (done) => {
     const response = await request(app).delete(ApiRouteEnum.BIKE).send({});
-    expect(response.body.message).toBe("Missing auth token");
+    expect(response.body.message).toBe(API_MESSAGES.MISSING_TOKEN);
     done();
   });
 
@@ -63,7 +62,7 @@ describe("Bike Suite", () => {
 
   test("Unauthenticated user cannot update bike, message contains 'Missing auth token'", async (done) => {
     const response = await request(app).patch(ApiRouteEnum.BIKE).send({});
-    expect(response.body.message).toBe("Missing auth token");
+    expect(response.body.message).toBe(API_MESSAGES.MISSING_TOKEN);
     done();
   });
 
@@ -75,7 +74,7 @@ describe("Bike Suite", () => {
 
   test("Unauthenticated user cannot create bike, message contains 'Missing auth token'", async (done) => {
     const response = await request(app).post(ApiRouteEnum.BIKE).send({});
-    expect(response.body.message).toBe("Missing auth token");
+    expect(response.body.message).toBe(API_MESSAGES.MISSING_TOKEN);
     done();
   });
 
