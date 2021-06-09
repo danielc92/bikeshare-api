@@ -10,14 +10,46 @@ A bike share REST-API, designed with Node.js, Typescript, TypeORM, Postgres & Do
 - Docker
 - Postgres
 
-### Instructions
+### Getting started
 
-Running the project
-
+Prerequisites:
+- Install NVM node package manager
+- Install docker for desktop
+#### Node 
 ```
-npm run start
+# Using node package manager install version 12
+nvm install 12.0.0
+
+nvm use 12.0.0
+
+# You may check what version is currently being used with
+nvm list
+
+# you will need nodemon
+npm i -g nodemon
+
+# install rest of dependencies
+npm i
+```
+#### Running development server
+```
+# Start the docker postgres db
+npm run db-start
+# Run the development api server
+npm run dev
+```
+#### Testing the controllers
+```
+# Start the docker postgres db (if you haven't done so already)
+npm run db-start
+# Running all tests
+npm run test
 ```
 
+#### Testing in postman
+- Import the collection from postman folder
+- Set `{{host}}` global variable to http://localhost:3050 (or whatever it is set to in `src/index.ts`)
+- Set `{{token}}` global variable if youre using authentication. This token is obtainable, each time a successful request to `{{host}}/auth/login` is made
 ### Available Routes
 
 - /auth/login (allows Riders to authenticate and retrieve jwt token)
