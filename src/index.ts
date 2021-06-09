@@ -11,9 +11,9 @@ import { populatePermission } from "~/utils/permissions";
 createConnection()
   .then(async (connection) => {
     // Listen for redis client error
-    client.on("error", function (error) {
-      console.error(error);
-    });
+    // client.on("error", function (error) {
+    //   console.error(error);
+    // });
 
     await populatePermission();
 
@@ -27,10 +27,11 @@ createConnection()
 // import { AppRoutes } from "./allRoutes";
 // import { client } from "./redis_client";
 // import * as cluster from "cluster";
+// import { populatePermission } from "./utils/permissions";
 
 // createConnection()
 //   .then(async (connection) => {
-//     if (cluster.isMaster) {
+//     if (false) {
 //       console.log(`Master ${process.pid} is running.`);
 
 //       for (let i = 0; i < 16; i++) {
@@ -65,9 +66,10 @@ createConnection()
 //           }
 //         );
 //       });
-//       client.on("error", function (error) {
-//         console.error(error);
-//       });
+//       // client.on("error", function (error) {
+//       //   console.error(error);
+//       // });
+//       await populatePermission()
 //       app.listen(3050);
 //     }
 //   })
